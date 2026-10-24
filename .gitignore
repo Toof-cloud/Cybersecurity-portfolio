@@ -1,0 +1,17 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows thumbnail cache
+Thumbs.db
+ehthumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Local working directory for raw/staging screenshots
+new_screenshots/

