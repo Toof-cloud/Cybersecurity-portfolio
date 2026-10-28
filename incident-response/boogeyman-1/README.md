@@ -11,16 +11,7 @@
 - **Credential theft:** attacker dumped Sticky Notes (`plum.sqlite`) and recovered the KeePass master password from decimal-encoded C2 traffic.
 - **Exfiltration:** KeePass vault hex-encoded and sent over DNS. I carved it back out of the PCAP (89 chunks, 2,206 bytes) and decrypted it to confirm the stolen corporate card.
 
-```mermaid
-flowchart LR
-    A["Phishing email"] --> B["Invoice.zip / .lnk"]
-    B --> C["Hidden PowerShell implant"]
-    C --> D["C2 cdn.bpakcaging.xyz:8080"]
-    D --> E["Seatbelt + sq3.exe"]
-    E --> F["KeePass password stolen"]
-    F --> G["DNS exfil to 167.71.211.113"]
-    G --> H["Vault carved and decrypted"]
-```
+![Boogeyman 1 Attack & DFIR Reconstruction Chain](screenshots/00_attack_chain.svg)
 
 ![DNS hex exfiltration in Wireshark](screenshots/13_dns_hex_queries.png)
 
