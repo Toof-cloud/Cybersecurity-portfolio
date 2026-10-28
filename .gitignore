@@ -15,3 +15,6 @@ ehthumbs.db
 
 # Local working directory for raw/staging screenshots
 new_screenshots/
+
+# Private working notes
+BOOGEYMAN_PROJECT.md

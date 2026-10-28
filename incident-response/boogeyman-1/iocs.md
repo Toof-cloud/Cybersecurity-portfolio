@@ -4,6 +4,8 @@
 **Classification:** TLP:AMBER / CONFIDENTIAL  
 **Target Organization:** Quick Logistics LLC  
 
+> Lab disclaimer: TryHackMe Boogeyman 1, all data simulated. Full context in [`report.md`](report.md).
+
 This document catalogs all verified Indicators of Compromise (IOCs), threat infrastructure, malicious artifacts, stolen credentials, and compromised financial assets identified across the Boogeyman 1 investigation.
 
 ---
@@ -20,12 +22,9 @@ This document catalogs all verified Indicators of Compromise (IOCs), threat infr
 | **IPv4 Address** | `167.71.211.113` | Malicious | Payload Server (`files.bpakcaging.xyz`) & Rogue DNS Exfil Receiver |
 | **IPv4 Address** | `15.235.99.80` | Suspicious | Elastic Email Relay Outbound MTA (`pa80.mxout.mta1.net`) |
 | **Email Address** | `agriffin@bpakcaging.xyz` | Malicious | Threat Actor Phishing Sender Identity |
-| **File (SHA-256)** | `4cdd0a2f16a9e1578b5c3419eeac9c403f7dce86b12fb3b821e19ce5f534c1fc` | Suspicious | Phishing Email RFC 822 Message (`dump.eml`) |
 | **File (SHA-256)** | `b55ee53b18871f811f5a4ec405cd70de6b3f1f7cf28712ab5cb5186cbf551e87` | Malicious | Encrypted Phishing Attachment Archive (`Invoice.zip`) |
 | **File (SHA-256)** | `86d5e0589fbd8c90604da954197344801f0579de157510e13492db0c712a0cc8` | Malicious | Weaponized Excel Shortcut (`Invoice_20230103.lnk`) |
-| **File (SHA-256)** | `71075589408ec06e3150a399461556eb55029ae1d3f8fc0f30bcf1bbe821c02d` | Forensic Source | Endpoint PowerShell Script Block Log (`powershell.json`) |
-| **File (SHA-256)** | `15dba24f3d9ef38dfbe0e33f995d0f8e60aa4f34ced5031c904281028e4f4bab` | Forensic Source | Network Egress Packet Capture (`capture.pcapng`) |
-| **File (SHA-256)** | `bf6a5fae84ea7eafe405e3a89e906e00b84f3c7c8dcfe2a49852ce79836ae056` | Compromised Asset | Carved KeePass 2.x Database (`protected_data_carved.kdbx`) |
+| **File (SHA-256)** | `b5e4f249800d741ee62d57113d00deabd634136ee6378e51c2b75c166f1833f4` | Compromised Asset | Carved KeePass 2.x Database (`protected_data_carved.kdbx`) |
 | **Server Header** | `Server: SimpleHTTP/0.6 Python/3.10.7` | Malicious | Attacker Python Payload Server Banner on Port 80 |
 | **HTTP Header** | `X-38d2-8f49: 8cce49b0-b86459bb-27fe2489` | Malicious | C2 Beacon Session Identification Header |
 | **C2 URI Path** | `http://cdn.bpakcaging.xyz:8080/8cce49b0` | Malicious | Initial C2 Registration / Handshake Endpoint |
@@ -36,6 +35,16 @@ This document catalogs all verified Indicators of Compromise (IOCs), threat infr
 | **Payload URI** | `http://files.bpakcaging.xyz/sq3.exe` | Malicious | SQLite Command-Line Binary for Sticky Notes Dumping |
 | **Credential** | `%p9^3!lL^Mz47E2GaT^y` | Compromised Secret | Julianne Westcott's KeePass Master Password |
 | **Financial Asset**| `4024007128269551` | Compromised Asset | Quick Logistics LLC Corporate Credit Card (CVV: 970, Exp: 3/2028) |
+
+---
+
+### Evidence File Hashes (not IOCs: lab evidence integrity only)
+
+| File | SHA-256 |
+|---|---|
+| `dump.eml` | `4cdd0a2f16a9e1578b5c3419eeac9c403f7dce86b12fb3b821e19ce5f534c1fc` |
+| `powershell.json` | `71075589408ec06e3150a399461556eb55029ae1d3f8fc0f30bcf1bbe821c02d` |
+| `capture.pcapng` | `15dba24f3d9ef38dfbe0e33f995d0f8e60aa4f34ced5031c904281028e4f4bab` |
 
 ---
 
