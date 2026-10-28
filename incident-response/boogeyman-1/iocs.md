@@ -1,7 +1,7 @@
 # Boogeyman 1 — Indicators of Compromise (IOCs)
 
 **Case Reference:** `INC-2023-0113-BGM1`  
-**Classification:** TLP:AMBER / CONFIDENTIAL  
+**Classification:** Public portfolio write-up (TryHackMe training lab)  
 **Target Organization:** Quick Logistics LLC  
 
 > Lab disclaimer: TryHackMe Boogeyman 1, all data simulated. Full context in [`report.md`](report.md).
@@ -107,7 +107,7 @@ This document catalogs all verified Indicators of Compromise (IOCs), threat infr
 
 ### 4.1 Master Password
 * **Plaintext:** `%p9^3!lL^Mz47E2GaT^y`
-* **Context:** Saved inside Microsoft Sticky Notes note ID 5 labeled `KeePass Master Password:`
+* **Context:** Saved inside Microsoft Sticky Notes (`plum.sqlite` note `ad8b52f0-e1bb-40f6-bbf9-47a53f9180ab` under `Master Password`)
 
 ### 4.2 Corporate Credit Card
 * **Vault Entry:** `Homebanking/Company Card`

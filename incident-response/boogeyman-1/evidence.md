@@ -18,7 +18,10 @@ Long raw artifacts such as the full `dump.eml`, full Base64 attachment content, 
 | `Invoice_20230103.lnk` | Shortcut file extracted from the ZIP archive |
 | `lnkparse output` | Output from analyzing the shortcut file |
 | `powershell.json` | Endpoint PowerShell log source containing PowerShell Event ID 4104 records |
-| `screenshots/` | Folder containing supporting investigation screenshots |
+| `capture.pcapng` | Full network packet capture from egress interface |
+| `protected_data_carved.kdbx` | KeePass 2.x database carved from DNS queries (2,206 bytes) |
+| `artifacts/powershell_4104_scriptblocks.txt` | Extracted PowerShell Event ID 4104 script blocks |
+| `screenshots/` | Folder containing annotated investigation screenshots (`00`–`14`) |
 
 ---
 
@@ -36,7 +39,7 @@ Reply-To: Arthur Griffin <agriffin@bpakcaging.xyz>
 Sender: agriffin@bpakcaging.xyz
 To: Julianne Westcott <julianne.westcott@hotmail.com>
 Return-Path: agriffin@bpakcaging.xyz
-````
+```
 
 ### Evidence Value
 
@@ -525,8 +528,6 @@ The destination IP address was:
 ```
 
 This behavior is consistent with DNS-based exfiltration.
-
-***
 
 ***
 

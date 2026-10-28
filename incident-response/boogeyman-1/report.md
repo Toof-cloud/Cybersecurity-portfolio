@@ -342,7 +342,6 @@ A complete catalog of indicators is documented in [`iocs.md`](iocs.md). Below is
 | **IP Address** | `159.89.205.40` | Attacker C2 Infrastructure (`cdn.bpakcaging.xyz:8080`). |
 | **IP Address** | `167.71.211.113` | Payload Server (`files.bpakcaging.xyz`) & Rogue DNS Receiver. |
 | **Email Address** | `agriffin@bpakcaging.xyz` | Threat Actor Phishing Sender Identity. |
-| **File (SHA-256)** | `4cdd0a2f16a9e1578b5c3419eeac9c403f7dce86b12fb3b821e19ce5f534c1fc` | Phishing Email Capture (`dump.eml`). |
 | **File (SHA-256)** | `b55ee53b18871f811f5a4ec405cd70de6b3f1f7cf28712ab5cb5186cbf551e87` | Password-Protected Attachment (`Invoice.zip`). |
 | **File (SHA-256)** | `86d5e0589fbd8c90604da954197344801f0579de157510e13492db0c712a0cc8` | Weaponized Shortcut (`Invoice_20230103.lnk`). |
 | **File (SHA-256)** | `b5e4f249800d741ee62d57113d00deabd634136ee6378e51c2b75c166f1833f4` | Carved KeePass Vault (`protected_data_carved.kdbx`). |
