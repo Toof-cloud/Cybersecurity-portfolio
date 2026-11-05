@@ -24,3 +24,4 @@
 | [`evidence.md`](evidence.md) | Raw evidence excerpts and commands |
 | [`artifacts/`](artifacts/) | Extracted PowerShell 4104 script blocks |
 | [`screenshots/`](screenshots/) | Annotated evidence screenshots (numbered in report order) |
+| [`../../detection-engineering/boogeyman-1-detections/`](../../detection-engineering/boogeyman-1-detections/) | **Companion Detection Pack:** 5 Suricata + 4 Sigma rules tested against this attack |

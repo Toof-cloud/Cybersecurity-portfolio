@@ -375,6 +375,9 @@ A complete catalog of indicators is documented in [`iocs.md`](iocs.md). Below is
 
 ## 10. Detection Opportunities
 
+> [!TIP]
+> **Tested Suricata & Sigma Detection Pack:** All detection concepts below have been implemented as working **Suricata NIDS rules (`SID 1000001`–`1000005`)** and **Sigma PowerShell 4104 rules**—and validated against `capture.pcapng` (48,858 packets) and `powershell.json` (987 records) with zero false positives—in the companion project: **[`detection-engineering/boogeyman-1-detections/`](../../detection-engineering/boogeyman-1-detections/)**.
+
 ### 10.1 Endpoint Detection (EDR / SIEM Rules)
 1. **PowerShell Script Block Alert (EID 4104):**
    * Flag commands combining `[System.IO.File]::ReadAllBytes` with `ToString X2` (Hexadecimal conversion).

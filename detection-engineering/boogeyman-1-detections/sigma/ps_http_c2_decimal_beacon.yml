@@ -1,0 +1,24 @@
+title: PowerShell In-Memory HTTP Polling Beacon with Byte Encoding
+id: 7a91b4c2-1101-4e8a-9c51-b006e7000002
+status: experimental
+description: Detects an infinite PowerShell polling loop using Invoke-WebRequest, IEX execution, and UTF8.GetBytes output encoding.
+author: Tyrone Gabriel Pascual
+date: 2026-11-05
+tags:
+  - attack.command_and_control
+  - attack.t1071.001
+  - attack.t1132.001
+logsource:
+  product: windows
+  category: ps_script
+detection:
+  selection:
+    ScriptBlockText|contains|all:
+      - 'while'
+      - 'Invoke-WebRequest'
+      - 'Encoding]::UTF8.GetBytes'
+      - 'iex'
+  condition: selection
+falsepositives:
+  - Unlikely in legitimate administrative scripts.
+level: critical

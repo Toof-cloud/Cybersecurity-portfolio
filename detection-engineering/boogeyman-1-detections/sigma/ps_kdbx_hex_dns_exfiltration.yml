@@ -1,0 +1,31 @@
+title: PowerShell File Byte Staging, Hex Encoding, and DNS Tunneling Loop
+id: 7a91b4c2-1101-4e8a-9c51-b006e7000004
+status: experimental
+description: Detects file staging via System.IO.File::ReadAllBytes, hexadecimal byte conversion (ToString X2), or automated nslookup exfiltration loops.
+author: Tyrone Gabriel Pascual
+date: 2026-11-05
+tags:
+  - attack.collection
+  - attack.exfiltration
+  - attack.t1005
+  - attack.t1048.003
+logsource:
+  product: windows
+  category: ps_script
+detection:
+  selection_read_bytes:
+    ScriptBlockText|contains:
+      - '[System.IO.File]::ReadAllBytes'
+  selection_hex_encode:
+    ScriptBlockText|contains|all:
+      - 'ForEach-Object'
+      - 'ToString'
+      - 'X2'
+  selection_dns_loop:
+    ScriptBlockText|contains|all:
+      - 'ForEach'
+      - 'nslookup'
+  condition: selection_read_bytes or selection_hex_encode or selection_dns_loop
+falsepositives:
+  - Rare administrative scripts performing binary file inspection or bulk DNS resolution.
+level: critical

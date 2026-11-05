@@ -1,0 +1,25 @@
+title: PowerShell Fileless WebClient DownloadString Cradle
+id: 7a91b4c2-1101-4e8a-9c51-b006e7000001
+status: experimental
+description: Detects PowerShell executing remote code directly in memory using Net.WebClient DownloadString and Invoke-Expression (IEX).
+author: Tyrone Gabriel Pascual
+date: 2026-11-05
+tags:
+  - attack.execution
+  - attack.t1059.001
+logsource:
+  product: windows
+  category: ps_script
+detection:
+  selection_iex:
+    ScriptBlockText|contains:
+      - 'iex'
+      - 'Invoke-Expression'
+  selection_webclient:
+    ScriptBlockText|contains|all:
+      - 'net.webclient'
+      - 'downloadstring'
+  condition: selection_iex and selection_webclient
+falsepositives:
+  - Legitimate administrative or package manager bootstrap scripts (e.g., Chocolatey).
+level: high

@@ -1,0 +1,22 @@
+=== SURICATA PCAP REPLAY STATS ===
+Engine: Suricata 8.0.7 RELEASE
+Input:  capture.pcapng (48,858 packets, 48,941,732 bytes)
+
+=== SURICATA ALERT SUMMARY BY SID ===
+      3 1000001 | CUSTOM HTTP Python SimpleHTTP Payload Server Response
+     20 1000002 | CUSTOM HTTP Boogeyman C2 Beacon Header Detected
+     24 1000003 | CUSTOM HTTP PowerShell C2 Decimal-Encoded Command Output POST
+      2 1000004 | CUSTOM DNS High-Entropy Hex Subdomain Exfiltration (40-63 Chars)
+      2 1000005 | CUSTOM DNS Direct Outbound Query to External Rogue Resolver (10-63 Hex Chars)
+
+=== SAMPLE ALERTS (FAST.LOG / EVE.JSON) ===
+01/14/2023-01:10:10.131687  [**] [1:1000001:1] CUSTOM HTTP Python SimpleHTTP Payload Server Response [**] {TCP} 167.71.211.113:80 -> 10.10.182.255:50189
+01/14/2023-01:10:11.392604  [**] [1:1000002:1] CUSTOM HTTP Boogeyman C2 Beacon Header Detected [**] {TCP} 10.10.182.255:50192 -> 159.89.205.40:8080
+01/14/2023-01:14:34.212762  [**] [1:1000001:1] CUSTOM HTTP Python SimpleHTTP Payload Server Response [**] {TCP} 167.71.211.113:80 -> 10.10.182.255:50407
+01/14/2023-01:23:39.364344  [**] [1:1000001:1] CUSTOM HTTP Python SimpleHTTP Payload Server Response [**] {TCP} 167.71.211.113:80 -> 10.10.182.255:50740
+01/14/2023-01:24:13.642560  [**] [1:1000003:1] CUSTOM HTTP PowerShell C2 Decimal-Encoded Command Output POST [**] {TCP} 10.10.182.255:50766 -> 159.89.205.40:8080
+01/14/2023-01:31:57.259809  [**] [1:1000003:1] CUSTOM HTTP PowerShell C2 Decimal-Encoded Command Output POST [**] {TCP} 10.10.182.255:51117 -> 159.89.205.40:8080
+01/14/2023-01:32:42.199522  [**] [1:1000004:1] CUSTOM DNS High-Entropy Hex Subdomain Exfiltration (40-63 Chars) [**] {UDP} 10.10.182.255:62563 -> 167.71.211.113:53
+01/14/2023-01:32:42.199522  [**] [1:1000005:1] CUSTOM DNS Direct Outbound Query to External Rogue Resolver (10-63 Hex Chars) [**] {UDP} 10.10.182.255:62563 -> 167.71.211.113:53
+01/14/2023-01:33:42.260044  [**] [1:1000004:1] CUSTOM DNS High-Entropy Hex Subdomain Exfiltration (40-63 Chars) [**] {UDP} 10.10.182.255:54000 -> 167.71.211.113:53
+01/14/2023-01:33:42.260044  [**] [1:1000005:1] CUSTOM DNS Direct Outbound Query to External Rogue Resolver (10-63 Hex Chars) [**] {UDP} 10.10.182.255:54000 -> 167.71.211.113:53
