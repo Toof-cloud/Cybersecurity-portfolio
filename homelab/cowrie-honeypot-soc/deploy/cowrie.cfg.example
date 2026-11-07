@@ -1,0 +1,36 @@
+# ==============================================================================
+# Sanitized Cowrie Honeypot Configuration (~/cowrie-data/etc/cowrie.cfg)
+# Sensor: vm-ubuntu-sensor-01 (Ubuntu 24.04 LTS / Docker UID 999 Isolation)
+# ==============================================================================
+
+[honeypot]
+# High-value decoy hostname to attract interactive post-exploitation operators
+hostname = prod-db-backup-01
+log_path = var/log/cowrie
+download_path = var/lib/cowrie/downloads
+ttylog = true
+ttylog_path = var/lib/cowrie/tty
+interactive_timeout = 300
+authentication_timeout = 120
+backend = shell
+
+[shell]
+filesystem = share/cowrie/fs.pickle
+processes = share/cowrie/cmdoutput.json
+arch = linux-x64-lsb
+kernel_version = 6.8.0-48-generic
+kernel_build_string = #48-Ubuntu SMP PREEMPT_DYNAMIC
+
+[ssh]
+enabled = true
+# Realistic Ubuntu OpenSSH banner to defeat simple banner-grabbing filters
+version = SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10
+listen_endpoints = tcp:2222:interface=0.0.0.0
+sftp_enabled = true
+forwarding = true
+forward_redirect = false
+
+[output_jsonlog]
+enabled = true
+logfile = var/log/cowrie/cowrie.json
+epoch_timestamp = false

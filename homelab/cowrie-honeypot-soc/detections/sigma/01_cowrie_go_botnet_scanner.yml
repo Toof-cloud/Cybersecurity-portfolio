@@ -1,0 +1,33 @@
+title: Automated Go SSH Scanner and Botnet HASSH Fingerprint
+id: 9a8b7c6d-1111-4a2b-8c3d-000000000001
+status: experimental
+description: >
+  Detects automated Go-based SSH scanners (SSH-2.0-Go) and known botnet HASSH
+  cryptographic key-exchange fingerprints observed probing cloud SSH endpoints
+  prior to brute-force or post-exploitation stages.
+author: Tyrone Gabriel R. Pascual
+date: 2026-11-07
+logsource:
+  product: linux
+  service: cowrie
+detection:
+  selection_version:
+    eventid: 'cowrie.client.version'
+    version|contains:
+      - 'SSH-2.0-Go'
+      - 'SSH-2.0-libssh'
+  selection_hassh:
+    eventid: 'cowrie.client.kex'
+    hassh:
+      - '98ddc5604ef6a1006a2b49a58759fbe6'
+      - 'fb6b6764192ffd53379bf22fb8ebad5e'
+      - 'cbc28da77fbd92eb7fc9ef9fb9fa2c4e'
+  condition: selection_version or selection_hassh
+falsepositives:
+  - Legitimate internal automation written in Go (golang.org/x/crypto/ssh)
+level: medium
+tags:
+  - attack.reconnaissance
+  - attack.t1595.002
+  - attack.credential_access
+  - attack.t1110.001

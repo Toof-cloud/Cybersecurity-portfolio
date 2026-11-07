@@ -1,0 +1,33 @@
+title: Anti-Honeypot Shell Arithmetic and Subshell Evasion Probes
+id: 9a8b7c6d-2222-4a2b-8c3d-000000000002
+status: experimental
+description: >
+  Detects sophisticated botnet loader verification probes that test whether an
+  SSH shell is a genuine Linux environment or a low/medium-interaction honeypot
+  by executing POSIX arithmetic expansion ($((89*213+5))), subshell variable
+  scoping checks (v=outer; (v=inner...)), and PID/function checks before
+  deploying an ELF payload.
+author: Tyrone Gabriel R. Pascual
+date: 2026-11-07
+logsource:
+  product: linux
+  service: cowrie
+detection:
+  selection:
+    eventid: 'cowrie.command.input'
+    input|contains:
+      - '_small_math'
+      - '_small_subshell'
+      - '_small_pid'
+      - 'v=outer; (v=inner'
+      - '89*213+5'
+      - 'a b;$()'
+  condition: selection
+falsepositives:
+  - None expected in production interactive SSH sessions
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.t1497.001
+  - attack.execution
+  - attack.t1059.004

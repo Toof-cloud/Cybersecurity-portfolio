@@ -1,0 +1,42 @@
+title: Hidden Dot-File Upload, /dev/shm Staging, and Sudo Password Pipe to Chmod
+id: 9a8b7c6d-3333-4a2b-8c3d-000000000003
+status: experimental
+description: >
+  Detects post-compromise malware staging where an attacker uploads a hidden
+  dot-file binary (e.g., .16) via SFTP into /dev/shm (shared-memory RAM disk)
+  or /root and pipes the compromised plaintext password into sudo -S to mark
+  the payload executable.
+author: Tyrone Gabriel R. Pascual
+date: 2026-11-07
+logsource:
+  product: linux
+  service: cowrie
+detection:
+  selection_sftp_dotfile:
+    eventid: 'cowrie.session.file_upload'
+    filename|startswith: '.'
+  selection_sftp_shm:
+    eventid: 'cowrie.session.file_upload'
+    outfile|contains: '/dev/shm/'
+  selection_sudo_pipe:
+    eventid: 'cowrie.command.input'
+    input|contains|all:
+      - 'sudo -S'
+      - 'chmod +x'
+  selection_chmod_hidden:
+    eventid: 'cowrie.command.input'
+    input|contains:
+      - "chmod +x '/dev/shm/."
+      - "chmod +x '/root/."
+  condition: selection_sftp_dotfile or selection_sftp_shm or selection_sudo_pipe or selection_chmod_hidden
+falsepositives:
+  - Rare legitimate deployment scripts piping passwords to sudo -S in /dev/shm
+level: critical
+tags:
+  - attack.command_and_control
+  - attack.t1105
+  - attack.defense_evasion
+  - attack.t1564.001
+  - attack.privilege_escalation
+  - attack.t1548.003
+  - attack.t1222.002

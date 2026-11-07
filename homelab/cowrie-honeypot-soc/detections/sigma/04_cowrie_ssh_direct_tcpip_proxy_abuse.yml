@@ -1,0 +1,23 @@
+title: Unauthorized SSH Direct-TCPIP Tunneling and Proxy Abuse
+id: 9a8b7c6d-4444-4a2b-8c3d-000000000004
+status: experimental
+description: >
+  Detects attackers abusing a compromised SSH session as a SOCKS/TCP proxy relay
+  via SSH direct-tcpip channel requests to external IP lookup services
+  (e.g., ipv4.icanhazip.com) or external C2/SMTP relay endpoints.
+author: Tyrone Gabriel R. Pascual
+date: 2026-11-07
+logsource:
+  product: linux
+  service: cowrie
+detection:
+  selection:
+    eventid: 'cowrie.direct-tcpip.request'
+  condition: selection
+falsepositives:
+  - Authorized bastion host port-forwarding by administrative users
+level: high
+tags:
+  - attack.command_and_control
+  - attack.t1090
+  - attack.t1572

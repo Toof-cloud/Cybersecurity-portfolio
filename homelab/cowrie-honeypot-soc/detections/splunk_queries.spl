@@ -1,0 +1,48 @@
+# ==============================================================================
+# Project 3: Cloud SSH Honeypot (Cowrie) — Splunk SPL Detection & Hunting Suite
+# Author: Tyrone Gabriel R. Pascual
+# Dataset: 10,301 Live Cowrie JSON Events (vm-ubuntu-sensor-01 / Malaysia West)
+# ==============================================================================
+
+# [SPL-01] Automated Go SSH Scanner & Botnet HASSH Fingerprinting (T1595.002)
+index=honeypot sourcetype="cowrie:json" src_ip!="172.17.0.1"
+| search (eventid="cowrie.client.version" AND (version="*SSH-2.0-Go*" OR version="*libssh*"))
+      OR (eventid="cowrie.client.kex" AND hassh IN ("98ddc5604ef6a1006a2b49a58759fbe6", "fb6b6764192ffd53379bf22fb8ebad5e", "cbc28da77fbd92eb7fc9ef9fb9fa2c4e"))
+| stats count as hits, dc(session) as sessions, values(version) as client_banners, values(hassh) as hassh_fingerprints by src_ip
+| sort - hits
+
+# [SPL-02] Anti-Honeypot Shell Arithmetic & Subshell Evasion Probes (T1497.001)
+index=honeypot sourcetype="cowrie:json" eventid="cowrie.command.input"
+| search input="*_small_math*" OR input="*_small_subshell*" OR input="*_small_pid*" OR input="*v=outer; (v=inner*" OR input="*89*213+5*"
+| stats count as evasion_probes, min(_time) as first_seen, max(_time) as last_seen, values(input) as sample_commands by src_ip, session
+
+# [SPL-03] CRITICAL: Hidden Dot-File SFTP Drop, /dev/shm Staging & Sudo Chmod (T1105 / T1564.001 / T1548.003)
+index=honeypot sourcetype="cowrie:json"
+| search (eventid="cowrie.session.file_upload" AND (filename=".*" OR outfile="*/dev/shm/*"))
+      OR (eventid="cowrie.command.input" AND input="*sudo -S*" AND input="*chmod +x*")
+      OR (eventid="cowrie.command.input" AND (input="*chmod +x '/dev/shm/.*" OR input="*chmod +x '/root/.*"))
+| table _time, src_ip, session, eventid, filename, shasum, input
+| sort _time
+
+# [SPL-04] Unauthorized SSH Direct-TCPIP Tunneling & Proxy Abuse (T1090 / T1572)
+index=honeypot sourcetype="cowrie:json" eventid="cowrie.direct-tcpip.request"
+| stats count as tunnel_requests, values(dst_ip) as target_hosts, values(dst_port) as target_ports by src_ip, session
+| sort - tunnel_requests
+
+# [SPL-05] Post-Compromise Linux Architecture Discovery (T1082)
+index=honeypot sourcetype="cowrie:json" eventid="cowrie.command.input"
+| search input="*uname -s -v -n -r -m*" OR input="*uname -a*" OR input="*/proc/cpuinfo*" OR input="*lscpu*"
+| stats count as recon_commands, values(input) as commands by src_ip, session
+
+# [SPL-06] Multi-Stage Attacker Kill-Chain Correlation Matrix (Brute Force -> Auth -> Recon -> Drop)
+index=honeypot sourcetype="cowrie:json" src_ip!="172.17.0.1"
+| stats count as total_events,
+        dc(session) as unique_sessions,
+        count(eval(eventid="cowrie.login.failed")) as failed_logins,
+        count(eval(eventid="cowrie.login.success")) as successful_logins,
+        count(eval(eventid="cowrie.command.input")) as commands_run,
+        count(eval(eventid="cowrie.session.file_upload")) as files_dropped,
+        count(eval(eventid="cowrie.direct-tcpip.request")) as proxy_tunnels,
+        values(shasum) as dropped_sha256
+        by src_ip
+| sort - files_dropped, - commands_run, - total_events
